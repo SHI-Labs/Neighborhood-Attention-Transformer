@@ -20,6 +20,8 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 
 # Abstract
+![NAT-Arch](image_assets/model_dark.png#gh-dark-mode-only)
+![NAT-Arch](image_assets/model_light.png#gh-light-mode-only)
 We present Neighborhood Attention Transformer (NAT), an efficient, 
 accurate and scalable hierarchical transformer that works well on 
 both image classification and downstream vision tasks. 
