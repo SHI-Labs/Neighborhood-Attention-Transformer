@@ -1,0 +1,10 @@
+-f https://download.pytorch.org/whl/cu113/torch_stable.html
+torch==1.11.0+cu113
+-f https://download.pytorch.org/whl/cu113/torch_stable.html
+torchvision==0.12.0+cu113
+-f https://download.openmmlab.com/mmcv/dist/cu113/torch1.11.0/index.html
+mmcv-full==1.4.8
+mmsegmentation==0.20.2
+git+https://github.com/rwightman/pytorch-image-models.git@9d6aad44f8fd32e89e5cca503efe3ada5071cc2a
+ninja==1.10.2.3
+fvcore==0.1.5.post20220305
