@@ -1,5 +1,8 @@
 # Neighborhood Attention CUDA Kernel
 
+![computeplot_dark](../../assets/kernelplot_dark.png#gh-dark-mode-only)
+![computeplot_light](../../assets/kernelplot_light.png#gh-light-mode-only)
+
 ## Requirements
 NATTEN is a PyTorch CUDA extension, therefore requires PyTorch. 
 The following are the recommended versions of these libraries and are strongly encouraged for reproducibility and speed:

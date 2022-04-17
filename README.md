@@ -52,6 +52,11 @@ Note that the edges are special (edge) cases.
 ![720p_fast_dm](assets/720p_fast_dm.gif#gh-dark-mode-only)
 ![720p_fast_lm](assets/720p_fast_lm.gif#gh-light-mode-only)
 
+## Implementation
+We wrote a [PyTorch CUDA extension](classification/cuda/README.md) to parallelize NA. 
+It's relatively fast, very memory-efficient, and supports half precision.
+There's still a lot of room for improvement, so feel free to open PRs and contribute!
+
 # Results and checkpoints
 
 ## Classification
