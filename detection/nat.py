@@ -8,11 +8,8 @@ from cuda.natten import NeighborhoodAttention
 
 
 class ConvTokenizer(nn.Module):
-    def __init__(self, patch_size=4, in_chans=3, embed_dim=96, norm_layer=None):
+    def __init__(self, in_chans=3, embed_dim=96, norm_layer=None):
         super().__init__()
-        patch_size = to_2tuple(patch_size)
-        self.patch_size = patch_size
-
         self.proj = nn.Sequential(
             nn.Conv2d(in_chans, embed_dim // 2, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)),
             nn.Conv2d(embed_dim // 2, embed_dim, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)),
@@ -136,7 +133,6 @@ class NAT(nn.Module):
                  depths,
                  num_heads,
                  drop_path_rate=0.2,
-                 patch_size=4,
                  in_chans=3,
                  kernel_size=7,
                  out_indices=(0, 1, 2, 3),
@@ -155,9 +151,7 @@ class NAT(nn.Module):
         self.num_features = [int(embed_dim * 2 ** i) for i in range(self.num_levels)]
         self.mlp_ratio = mlp_ratio
 
-        self.patch_embed = ConvTokenizer(
-            patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim,
-            norm_layer=norm_layer)
+        self.patch_embed = ConvTokenizer(in_chans=in_chans, embed_dim=embed_dim, norm_layer=norm_layer)
 
         self.pos_drop = nn.Dropout(p=drop_rate)
 

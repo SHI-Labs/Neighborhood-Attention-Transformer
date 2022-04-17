@@ -14,11 +14,8 @@ model_urls = {
 
 
 class ConvTokenizer(nn.Module):
-    def __init__(self, patch_size=4, in_chans=3, embed_dim=96, norm_layer=None):
+    def __init__(self, in_chans=3, embed_dim=96, norm_layer=None):
         super().__init__()
-        patch_size = to_2tuple(patch_size)
-        self.patch_size = patch_size
-
         self.proj = nn.Sequential(
             nn.Conv2d(in_chans, embed_dim // 2, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)),
             nn.Conv2d(embed_dim // 2, embed_dim, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)),
@@ -141,7 +138,6 @@ class NAT(nn.Module):
                  depths,
                  num_heads,
                  drop_path_rate=0.2,
-                 patch_size=4,
                  in_chans=3,
                  kernel_size=7,
                  num_classes=1000,
@@ -160,10 +156,7 @@ class NAT(nn.Module):
         self.num_features = int(embed_dim * 2 ** (self.num_levels - 1))
         self.mlp_ratio = mlp_ratio
 
-        self.patch_embed = ConvTokenizer(patch_size=patch_size,
-                                         in_chans=in_chans,
-                                         embed_dim=embed_dim,
-                                         norm_layer=norm_layer)
+        self.patch_embed = ConvTokenizer(in_chans=in_chans, embed_dim=embed_dim, norm_layer=norm_layer)
 
         self.pos_drop = nn.Dropout(p=drop_rate)
 
@@ -222,8 +215,8 @@ class NAT(nn.Module):
 
 @register_model
 def nat_mini(pretrained=False, **kwargs):
-    model =  NAT(depths=[3, 4, 6, 5], num_heads=[2, 4, 8, 16], embed_dim=64, mlp_ratio=3,
-                 drop_path_rate=0.2, kernel_size=7, patch_size=4, **kwargs)
+    model = NAT(depths=[3, 4, 6, 5], num_heads=[2, 4, 8, 16], embed_dim=64, mlp_ratio=3,
+                 drop_path_rate=0.2, kernel_size=7, **kwargs)
     if pretrained:
         url = model_urls['nat_mini_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -234,7 +227,7 @@ def nat_mini(pretrained=False, **kwargs):
 @register_model
 def nat_tiny(pretrained=False, **kwargs):
     model = NAT(depths=[3, 4, 18, 5], num_heads=[2, 4, 8, 16], embed_dim=64, mlp_ratio=3,
-                drop_path_rate=0.2, kernel_size=7, patch_size=4, **kwargs)
+                drop_path_rate=0.2, kernel_size=7, **kwargs)
     if pretrained:
         url = model_urls['nat_tiny_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -245,7 +238,7 @@ def nat_tiny(pretrained=False, **kwargs):
 @register_model
 def nat_small(pretrained=False, **kwargs):
     model = NAT(depths=[3, 4, 18, 5], num_heads=[3, 6, 12, 24], embed_dim=96, mlp_ratio=2,
-                drop_path_rate=0.3, layer_scale=1e-5, kernel_size=7, patch_size=4, **kwargs)
+                drop_path_rate=0.3, layer_scale=1e-5, kernel_size=7, **kwargs)
     if pretrained:
         url = model_urls['nat_small_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
@@ -256,7 +249,7 @@ def nat_small(pretrained=False, **kwargs):
 @register_model
 def nat_base(pretrained=False, **kwargs):
     model = NAT(depths=[3, 4, 18, 5], num_heads=[4, 8, 16, 32], embed_dim=128, mlp_ratio=2,
-                drop_path_rate=0.5, layer_scale=1e-5, kernel_size=7, patch_size=4, **kwargs)
+                drop_path_rate=0.5, layer_scale=1e-5, kernel_size=7, **kwargs)
     if pretrained:
         url = model_urls['nat_base_1k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
