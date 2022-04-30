@@ -18,7 +18,7 @@ Training time improvement vs CUDA extension version | Throughput vs Accuracy
 
 Compute vs Accuracy |  Memory usage vs Accuracy
 :-------------------------:|:-------------------------:
-![NAT-Intro](../../assets/memoryusage_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/memoryusage_light.png#gh-light-mode-only) | ![computeplot_dark](../../assets/computeplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/computeplot_light.png#gh-light-mode-only)
+![computeplot_dark](../../assets/computeplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/computeplot_light.png#gh-light-mode-only) | ![NAT-Intro](../../assets/memoryusage_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/memoryusage_light.png#gh-light-mode-only) 
 
 
 ### Requirements
