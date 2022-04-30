@@ -35,7 +35,7 @@ Once it is done, you can start training normally.
 
 It is recommended to repeat this step upon every update to the repository.
 
-You can find more details about the extension [here](cuda/README.md).
+You can find more details about the extension [here](natten/README.md).
 
 ## Training on ADE20K
 <details>

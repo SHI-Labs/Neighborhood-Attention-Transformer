@@ -20,12 +20,11 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 
 # News
-
 ### April 30, 2022
 * CUDA extension v0.11 released.
   * It's faster in both training and inference, 
   * with a single version for all three tasks (no downstream-specific version)
-* [PyTorch implementation](classification/cuda/README.md) released
+* [PyTorch implementation](classification/natten) released
   * Works both with and without CUDA, but not very efficient. Try to use the CUDA extension when possible.
 
 # Abstract
@@ -62,10 +61,10 @@ Note that the edges are special (edge) cases.
 ![720p_fast_lm](assets/720p_fast_lm.gif#gh-light-mode-only)
 
 ## Implementation
-We wrote a [PyTorch CUDA extension](classification/cuda/README.md) to parallelize NA. 
+We wrote a [PyTorch CUDA extension](classification/natten) to parallelize NA. 
 It's relatively fast, very memory-efficient, and supports half precision.
 There's still a lot of room for improvement, so feel free to open PRs and contribute!
-We've also released a [pure-torch version of Neighborhood Attention](classification/cuda/README.md) recently.
+We've also released a [pure-torch version of Neighborhood Attention](classification/natten) recently.
 
 # Results and checkpoints
 

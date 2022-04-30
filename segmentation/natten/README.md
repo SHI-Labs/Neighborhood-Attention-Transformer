@@ -4,9 +4,9 @@
 This implementation is based on `F.unfold` and `F.pad`, therefore doesn't require the extension, and can run on a CPU.
 However, it is very inefficient, and uses up a lot of memory (see the figure below).
 ### Usage
-Simply import `NeighborhoodAttention` from `cuda.natten`:
+Simply import `LegacyNeighborhoodAttention` from `natten`:
 ```python
-from cuda.torchnat import LegacyNeighborhoodAttention
+from natten import LegacyNeighborhoodAttention
 ```
 
 ## CUDA Extension
@@ -44,7 +44,7 @@ After it builds, please run the following to ensure that the extension is functi
 python3 gradcheck.py
 ```
 ### Usage
-Simply import `NeighborhoodAttention` from `cuda.natten`:
+Simply import `NeighborhoodAttention` from `natten`:
 ```python
-from cuda.natten import NeighborhoodAttention
+from natten import NeighborhoodAttention
 ```
