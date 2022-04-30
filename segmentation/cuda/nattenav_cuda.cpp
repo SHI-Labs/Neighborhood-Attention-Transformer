@@ -1,8 +1,14 @@
+/*
+NATTEN-AV TORCH EXTENSION (CUDA)
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+*/
 #include <torch/extension.h>
 #include <vector>
 
 // CUDA forward declaration
-std::vector<torch::Tensor> nattenav_cuda_forward(
+torch::Tensor nattenav_cuda_forward(
     const torch::Tensor &attn,
     const torch::Tensor &value);
 
@@ -17,7 +23,7 @@ std::vector<torch::Tensor> nattenav_cuda_backward(
 #define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
 #define CHECK_INPUT(x) CHECK_CUDA(x); CHECK_CONTIGUOUS(x)
 
-std::vector<torch::Tensor> nattenav_forward(
+torch::Tensor nattenav_forward(
     const torch::Tensor &attn,
     const torch::Tensor &value) {
   CHECK_INPUT(attn);

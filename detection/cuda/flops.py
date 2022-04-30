@@ -1,7 +1,13 @@
-import typing
-from collections import Counter, OrderedDict
+"""
+Neighborhood Attention FLOP counter
+Because we're using a custom CUDA kernel, FVCore won't recognize it and count its flops, so we have
+to manually define flop counters for each extension.
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+"""
 from numbers import Number
-from typing import Any, Callable, List, Optional, Union
+from typing import Any, List
 from fvcore.nn.jit_handles import get_shape
 
 

@@ -1,5 +1,12 @@
+"""
+Neighborhood Attention PyTorch Module (CUDA only)
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+"""
 import torch
 from torch import nn
+from torch.nn.functional import pad
 from timm.models.layers import trunc_normal_
 from torch.autograd import Function
 from torch.cuda.amp import custom_fwd, custom_bwd
@@ -20,6 +27,11 @@ except:
 
 
 class NATTENAVFunction(Function):
+    """
+    AV autograd function
+    Computes neighborhood attention outputs given attention weights, and values.
+    This calls the `AV` kernel.
+    """
     @staticmethod
     @custom_fwd(cast_inputs=torch.float16)
     def forward(ctx, attn, value):
@@ -27,7 +39,7 @@ class NATTENAVFunction(Function):
         value = value.contiguous()
         out = nattenav_cuda.forward(
                 attn, 
-                value)[0]
+                value)
         ctx.save_for_backward(attn, value)
         return out
 
@@ -41,6 +53,12 @@ class NATTENAVFunction(Function):
 
 
 class NATTENQKRPBFunction(Function):
+    """
+    QK+RPB autograd function
+    Computes neighborhood attention weights given queries and keys,
+    and adds relative positional biases.
+    This calls the `QKRPB` kernel.
+    """
     @staticmethod
     @custom_fwd(cast_inputs=torch.float16)
     def forward(ctx, query, key, rpb):
@@ -49,7 +67,7 @@ class NATTENQKRPBFunction(Function):
         attn = nattenqkrpb_cuda.forward(
                 query,
                 key,
-                rpb.contiguous())[0]
+                rpb)
         ctx.save_for_backward(query, key)
         return attn
 
@@ -63,13 +81,14 @@ class NATTENQKRPBFunction(Function):
 
 
 class NeighborhoodAttention(nn.Module):
+    """
+    Neighborhood Attention Module
+    """
     def __init__(self, dim, kernel_size, num_heads,
                  qkv_bias=True, qk_scale=None, attn_drop=0., proj_drop=0.):
         super().__init__()
         self.num_heads = num_heads
         self.head_dim = dim // self.num_heads
-        assert self.head_dim == 32 , \
-            f"CUDA kernel only supports 32 dim per head, got {self.head_dim}."
         self.scale = qk_scale or self.head_dim ** -0.5
         assert kernel_size > 1 and kernel_size % 2 == 1, \
             f"Kernel size must be an odd number greater than 1, got {kernel_size}."
@@ -86,6 +105,19 @@ class NeighborhoodAttention(nn.Module):
 
     def forward(self, x):
         B, H, W, C = x.shape
+        N = H * W
+        num_tokens = int(self.kernel_size ** 2)
+        pad_l = pad_t = pad_r = pad_b = 0
+        Ho, Wo = H, W
+        if N <= num_tokens:
+            if self.kernel_size > W:
+                pad_r = self.kernel_size - W
+            if self.kernel_size > H:
+                pad_b = self.kernel_size - H
+            x = pad(x, (0, 0, pad_l, pad_r, pad_t, pad_b))
+            B, H, W, C = x.shape
+            N = H * W
+            assert N == num_tokens
         qkv = self.qkv(x).reshape(B, H, W, 3, self.num_heads, self.head_dim).permute(3, 0, 4, 1, 2, 5)
         q, k, v = qkv[0], qkv[1], qkv[2]
         q = q * self.scale
@@ -94,5 +126,7 @@ class NeighborhoodAttention(nn.Module):
         attn = self.attn_drop(attn)
         x = NATTENAVFunction.apply(attn, v)
         x = x.permute(0, 2, 3, 1, 4).reshape(B, H, W, C)
+        if pad_r or pad_b:
+            x = x[:, :Ho, :Wo, :]
         return self.proj_drop(self.proj(x))
 

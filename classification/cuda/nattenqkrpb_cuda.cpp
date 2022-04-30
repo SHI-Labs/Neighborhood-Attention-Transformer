@@ -1,8 +1,14 @@
+/*
+NATTEN-QKRPB TORCH EXTENSION (CUDA)
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+*/
 #include <torch/extension.h>
 #include <vector>
 
 // CUDA forward declarations
-std::vector<torch::Tensor> nattenqkrpb_cuda_forward(
+torch::Tensor nattenqkrpb_cuda_forward(
     const torch::Tensor &query,
     const torch::Tensor &key,
     const torch::Tensor &rpb);
@@ -18,7 +24,7 @@ std::vector<torch::Tensor> nattenqkrpb_cuda_backward(
 #define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
 #define CHECK_INPUT(x) CHECK_CUDA(x); CHECK_CONTIGUOUS(x)
 
-std::vector<torch::Tensor> nattenqkrpb_forward(
+torch::Tensor nattenqkrpb_forward(
     const torch::Tensor &query,
     const torch::Tensor &key,
     const torch::Tensor &rpb) {
