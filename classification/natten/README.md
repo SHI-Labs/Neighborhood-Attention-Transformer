@@ -11,15 +11,14 @@ from natten import LegacyNeighborhoodAttention
 
 ## CUDA Extension
 
+Training time improvement vs CUDA extension version | Throughput vs Accuracy
+:-------------------------:|:-------------------------:
+![computeplot_dark](../../assets/kernelplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/kernelplot_light.png#gh-light-mode-only) | ![NAT-Intro](../../assets/throughputplot_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/throughputplot_light.png#gh-light-mode-only)
+
 
 Compute vs Accuracy |  Memory usage vs Accuracy
 :-------------------------:|:-------------------------:
 ![NAT-Intro](../../assets/memoryusage_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/memoryusage_light.png#gh-light-mode-only) | ![computeplot_dark](../../assets/computeplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/computeplot_light.png#gh-light-mode-only)
-
-
-Throughput vs Accuracy |  Training time improvement vs CUDA extension version
-:-------------------------:|:-------------------------:
-![NAT-Intro](../../assets/throughputplot_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/throughputplot_light.png#gh-light-mode-only) | ![computeplot_dark](../../assets/kernelplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/kernelplot_light.png#gh-light-mode-only)
 
 
 ### Requirements
