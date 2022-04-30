@@ -1,6 +1,6 @@
 import torch
 from fvcore.nn import FlopCountAnalysis
-from cuda.flops import qk_rpb_flop, av_flop
+from natten.flops import qk_rpb_flop, av_flop
 
 
 def get_gflops(model, img_size=224, disable_warnings=False, device='cpu'):

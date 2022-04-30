@@ -24,7 +24,7 @@ version of the atomic add operator we use for backpropagation.
 ## Setup
 Once you have the requirements, please run the following and allow a few minutes for Ninja to compile the extension:
 ```shell
-python3 cuda/gradcheck.py
+python3 natten/gradcheck.py
 ```
 Ninja is not verbose while compiling, so it is normal not to see any outputs unless there is an error. 
 After a few minutes you should see the message "Verifying backward pass...".
@@ -33,7 +33,7 @@ Once it is done, you can start training normally.
 
 It is recommended to repeat this step upon every update to the repository.
 
-You can find more details about the extension [here](cuda/README.md).
+You can find more details about the extension [here](natten/README.md).
 
 ## Training on ImageNet-1k
 <details>

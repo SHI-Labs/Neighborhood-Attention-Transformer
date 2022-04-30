@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-from timm.models.layers import trunc_normal_, DropPath, to_2tuple
+from timm.models.layers import trunc_normal_, DropPath
 from timm.models.registry import register_model
-from cuda.natten import NeighborhoodAttention
+from natten import NeighborhoodAttention
 
 
 model_urls = {

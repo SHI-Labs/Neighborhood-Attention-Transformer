@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
-from timm.models.layers import DropPath, to_2tuple, trunc_normal_
+from timm.models.layers import DropPath
 from mmcv.runner import load_checkpoint
 from mmdet.utils import get_root_logger
 from mmdet.models.builder import BACKBONES
-from cuda.natten import NeighborhoodAttention
+from natten.natten import NeighborhoodAttention
 
 
 class ConvTokenizer(nn.Module):
