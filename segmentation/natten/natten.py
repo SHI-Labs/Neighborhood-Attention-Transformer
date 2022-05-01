@@ -14,9 +14,9 @@ from torch.cuda.amp import custom_fwd, custom_bwd
 try:
     from torch.utils.cpp_extension import load
     nattenav_cuda = load(
-        'nattenav_cuda', ['cuda/nattenav_cuda.cpp', 'cuda/nattenav_cuda_kernel.cu'], verbose=False)
+        'nattenav_cuda', ['natten/nattenav_cuda.cpp', 'natten/nattenav_cuda_kernel.cu'], verbose=False)
     nattenqkrpb_cuda = load(
-        'nattenqkrpb_cuda', ['cuda/nattenqkrpb_cuda.cpp', 'cuda/nattenqkrpb_cuda_kernel.cu'], verbose=False)
+        'nattenqkrpb_cuda', ['natten/nattenqkrpb_cuda.cpp', 'natten/nattenqkrpb_cuda_kernel.cu'], verbose=False)
 except:
     try:
         import nattenav_cuda
