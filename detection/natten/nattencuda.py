@@ -14,9 +14,9 @@ from torch.cuda.amp import custom_fwd, custom_bwd
 try:
     from torch.utils.cpp_extension import load
     nattenav_cuda = load(
-        'nattenav_cuda', ['natten/nattenav_cuda.cpp', 'natten/nattenav_cuda_kernel.cu'], verbose=False)
+        'nattenav_cuda', ['natten/src/nattenav_cuda.cpp', 'natten/src/nattenav_cuda_kernel.cu'], verbose=False)
     nattenqkrpb_cuda = load(
-        'nattenqkrpb_cuda', ['natten/nattenqkrpb_cuda.cpp', 'natten/nattenqkrpb_cuda_kernel.cu'], verbose=False)
+        'nattenqkrpb_cuda', ['natten/src/nattenqkrpb_cuda.cpp', 'natten/src/nattenqkrpb_cuda_kernel.cu'], verbose=False)
 except:
     try:
         import nattenav_cuda
@@ -117,7 +117,7 @@ class NeighborhoodAttention(nn.Module):
             x = pad(x, (0, 0, pad_l, pad_r, pad_t, pad_b))
             B, H, W, C = x.shape
             N = H * W
-            assert N == num_tokens
+            assert N == num_tokens, f"Something went wrong. {N} should equal {H} x {W}!"
         qkv = self.qkv(x).reshape(B, H, W, 3, self.num_heads, self.head_dim).permute(3, 0, 4, 1, 2, 5)
         q, k, v = qkv[0], qkv[1], qkv[2]
         q = q * self.scale

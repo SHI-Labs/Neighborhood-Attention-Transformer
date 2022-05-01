@@ -1,10 +1,17 @@
+"""
+Neighborhood Attention Transformer.
+https://arxiv.org/abs/2204.07143
+
+This source code is licensed under the license found in the
+LICENSE file in the root directory of this source tree.
+"""
 import torch
 import torch.nn as nn
 from timm.models.layers import DropPath
 from mmcv.runner import load_checkpoint
 from mmseg.utils import get_root_logger
 from mmseg.models.builder import BACKBONES
-from natten.natten import NeighborhoodAttention
+from natten import NeighborhoodAttention
 
 
 class ConvTokenizer(nn.Module):
