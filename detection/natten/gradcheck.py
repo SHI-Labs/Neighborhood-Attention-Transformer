@@ -8,7 +8,7 @@ The defaults provided should run on standard GPUs.
 This source code is licensed under the license found in the
 LICENSE file in the root directory of this source tree.
 """
-from natten import NATTENAVFunction, NATTENQKRPBFunction
+from nattencuda import NATTENAVFunction, NATTENQKRPBFunction
 import torch
 from torch.autograd import gradcheck
 import argparse

@@ -39,12 +39,13 @@ By having `ninja` installed, you don't need to install anything manually.
 The extension will compile when it's called first.
 To compile and ensure that the extension is functioning correctly, please run:
 ```
-python3 gradcheck.py
+python3 natten/gradcheck.py
 ```
 
 #### Without Ninja
 If you want to build without JIT, simply build with setup:
 ```shell
+cd natten/src
 python setup.py install
 ```
 After it builds, please run the following to ensure that the extension is functioning correctly:
