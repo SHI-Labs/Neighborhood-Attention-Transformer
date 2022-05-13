@@ -36,8 +36,8 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 - [x] Neighborhood Attention 1D (CUDA)
 - [x] Neighborhood Attention 2D (CUDA)
 - [x] Neighborhood Attention 2D (PyTorch)
-- [] Zeros/Valid padding support
-- [] HuggingFace Demo
+- [ ] Zeros/Valid padding support
+- [ ] HuggingFace Demo
 
 # Abstract
 ![NAT-Arch](assets/model_dark.png#gh-dark-mode-only)
