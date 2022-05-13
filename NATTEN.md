@@ -13,12 +13,12 @@ from natten import LegacyNeighborhoodAttention
 
 Training time improvement vs CUDA extension version | Throughput vs Accuracy
 :-------------------------:|:-------------------------:
-![computeplot_dark](../../assets/kernelplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/kernelplot_light.png#gh-light-mode-only) | ![NAT-Intro](../../assets/throughputplot_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/throughputplot_light.png#gh-light-mode-only)
+![computeplot_dark](assets/kernelplot_dark.png#gh-dark-mode-only) ![computeplot_light](assets/kernelplot_light.png#gh-light-mode-only) | ![NAT-Intro](assets/throughputplot_dark.png#gh-dark-mode-only) ![NAT-Intro](assets/throughputplot_light.png#gh-light-mode-only)
 
 
 Compute vs Accuracy |  Memory usage vs Accuracy
 :-------------------------:|:-------------------------:
-![computeplot_dark](../../assets/computeplot_dark.png#gh-dark-mode-only) ![computeplot_light](../../assets/computeplot_light.png#gh-light-mode-only) | ![NAT-Intro](../../assets/memoryusage_dark.png#gh-dark-mode-only) ![NAT-Intro](../../assets/memoryusage_light.png#gh-light-mode-only) 
+![computeplot_dark](assets/computeplot_dark.png#gh-dark-mode-only) ![computeplot_light](assets/computeplot_light.png#gh-light-mode-only) | ![NAT-Intro](assets/memoryusage_dark.png#gh-dark-mode-only) ![NAT-Intro](assets/memoryusage_light.png#gh-light-mode-only) 
 
 
 ### Requirements
@@ -40,6 +40,7 @@ The extension will compile when it's called first.
 To compile and ensure that the extension is functioning correctly, please run:
 ```
 python3 natten/gradcheck.py
+python3 natten/gradcheck1d.py # 1D NA
 ```
 
 #### Without Ninja
@@ -50,10 +51,15 @@ python setup.py install
 ```
 After it builds, please run the following to ensure that the extension is functioning correctly:
 ```
-python3 gradcheck.py
+python3 natten/gradcheck.py
+python3 natten/gradcheck1d.py # 1D NA
 ```
 ### Usage
 Simply import `NeighborhoodAttention` from `natten`:
 ```python
 from natten import NeighborhoodAttention
+```
+To use the 1D version of NA, simply import `NeighborhoodAttention1d` from `natten`:
+```python
+from natten import NeighborhoodAttention1d
 ```

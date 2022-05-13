@@ -22,6 +22,14 @@ setup(
             'nattenqkrpb_cuda.cpp',
             'nattenqkrpb_cuda_kernel.cu',
         ]),
+        CUDAExtension('natten1dav_cuda', [
+            'natten1dav_cuda.cpp',
+            'natten1dav_cuda_kernel.cu',
+        ]),
+        CUDAExtension('natten1dqkrpb_cuda', [
+            'natten1dqkrpb_cuda.cpp',
+            'natten1dqkrpb_cuda_kernel.cu',
+        ]),
     ],
     cmdclass={
         'build_ext': BuildExtension

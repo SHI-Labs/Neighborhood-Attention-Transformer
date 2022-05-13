@@ -95,7 +95,7 @@ __global__ void nattena_cuda_backward_kernel(
                 #pragma unroll
                 for (int dimOffset=0; dimOffset < dim; ++dimOffset)
                     updt += static_cast<accscalar_t>(d_out.data()[outOffset+dimOffset]) * static_cast<accscalar_t>(value.data()[valueOffset+dimOffset]);
-                const int index = b * d_attn.stride(0) + h * d_attn.stride(1) + i * d_attn.stride(2) + j * d_attn.stride(3) + (ki*KERNEL_SIZE+kj) * d_attn.stride(4);
+                const int index = b * d_attn.stride(0) + h * d_attn.stride(1) + i * d_attn.stride(2) + j * d_attn.stride(3) + y * d_attn.stride(4);
                 d_attn.data()[index] = static_cast<scalar_t>(updt);
             }
         }

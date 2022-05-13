@@ -10,13 +10,15 @@ from torch.nn.functional import pad
 from timm.models.layers import trunc_normal_
 from torch.autograd import Function
 from torch.cuda.amp import custom_fwd, custom_bwd
+import os
 
 try:
+    this_dir = os.path.dirname(os.path.realpath(__file__))
     from torch.utils.cpp_extension import load
     nattenav_cuda = load(
-        'nattenav_cuda', ['natten/src/nattenav_cuda.cpp', 'natten/src/nattenav_cuda_kernel.cu'], verbose=False)
+        'nattenav_cuda', [f'{this_dir}/src/nattenav_cuda.cpp', f'{this_dir}/src/nattenav_cuda_kernel.cu'], verbose=False)
     nattenqkrpb_cuda = load(
-        'nattenqkrpb_cuda', ['natten/src/nattenqkrpb_cuda.cpp', 'natten/src/nattenqkrpb_cuda_kernel.cu'], verbose=False)
+        'nattenqkrpb_cuda', [f'{this_dir}/src/nattenqkrpb_cuda.cpp', f'{this_dir}/src/nattenqkrpb_cuda_kernel.cu'], verbose=False)
 except:
     try:
         import nattenav_cuda
