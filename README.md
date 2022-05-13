@@ -20,12 +20,24 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 
 # News
+
+### May 12, 2022
+* [1-D Neighborhood Attention](NATTEN.md) support added!
+* Moved the kernel to `natten/` now, since there's a single version for all three tasks, and we're adding more features to the extension.
+
 ### April 30, 2022
 * CUDA extension v0.11 released.
   * It's faster in both training and inference, 
   * with a single version for all three tasks (no downstream-specific version)
-* [PyTorch implementation](classification/natten) released
+* [PyTorch implementation](NATTEN.md) released
   * Works both with and without CUDA, but not very efficient. Try to use the CUDA extension when possible.
+
+# Catalog
+- [x] Neighborhood Attention 1D (CUDA)
+- [x] Neighborhood Attention 2D (CUDA)
+- [x] Neighborhood Attention 2D (PyTorch)
+- [ ] Zeros/Valid padding support
+- [ ] HuggingFace Demo
 
 # Abstract
 ![NAT-Arch](assets/model_dark.png#gh-dark-mode-only)
@@ -61,10 +73,10 @@ Note that the edges are special (edge) cases.
 ![720p_fast_lm](assets/720p_fast_lm.gif#gh-light-mode-only)
 
 ## Implementation
-We wrote a [PyTorch CUDA extension](classification/natten) to parallelize NA. 
+We wrote a [PyTorch CUDA extension](NATTEN.md) to parallelize NA. 
 It's relatively fast, very memory-efficient, and supports half precision.
 There's still a lot of room for improvement, so feel free to open PRs and contribute!
-We've also released a [pure-torch version of Neighborhood Attention](classification/natten) recently.
+We've also released a [pure-torch version of Neighborhood Attention](NATTEN.md) recently.
 
 # Results and checkpoints
 

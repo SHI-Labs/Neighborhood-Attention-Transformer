@@ -7,7 +7,7 @@ from mmcv import Config, DictAction
 
 from mmdet.models import build_detector
 from nat import *
-from extras.model import get_gflops, get_mparams
+from natten.extras import get_gflops, get_mparams
 
 
 def parse_args():

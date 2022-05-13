@@ -76,7 +76,7 @@ __global__ void nattenqkrpb_cuda_forward_kernel(
                 #pragma unroll
                 for (int dimOffset=0; dimOffset < dim; ++dimOffset)
                     updt += static_cast<accscalar_t>(query.data()[queryOffset+dimOffset]) * static_cast<accscalar_t>(key.data()[keyOffset+dimOffset]);
-                const int index = b * attn.stride(0) + h * attn.stride(1) + i * attn.stride(2) + j * attn.stride(3) + (ki*KERNEL_SIZE+kj) * attn.stride(4);
+                const int index = b * attn.stride(0) + h * attn.stride(1) + i * attn.stride(2) + j * attn.stride(3) + y * attn.stride(4);
                 const int rpbIndex = h * rpb.stride(0) + (pi+ki) * rpb.stride(1) + (pj+kj) * rpb.stride(2);
                 updt += rpb.data()[rpbIndex];
                 attn.data()[index] = static_cast<scalar_t>(updt);

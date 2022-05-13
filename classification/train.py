@@ -43,7 +43,8 @@ from timm.scheduler import *
 from timm.utils import ApexScaler, NativeScaler
 
 from nat import *
-from extras import get_gflops, get_mparams
+from natten.extras import get_imagenet_gflops as get_gflops
+from natten.extras import get_mparams
 
 import yaml
 import builtins as __builtin__
