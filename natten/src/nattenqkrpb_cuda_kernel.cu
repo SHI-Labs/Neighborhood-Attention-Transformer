@@ -221,8 +221,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_5x5_32(
     const int batchHeadOffset = b * (stride2*height*heads) + h * (stride2*height);
     const int si = sy / KERNEL_SIZE_5;
     const int sj = sx / KERNEL_SIZE_5;
-    const int sni = get_window_start(si, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
     __shared__ __half2 tile[TILE_5*TILE_5][DIM_32+3];
     __shared__ __half2 kTile[KTILE_5*KTILE_5][DIM_32+3];
     __half2* query2 = reinterpret_cast<__half2*>(query.data());
@@ -261,10 +261,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_5x5_32(
         const int ki = y - i * KERNEL_SIZE_5;
         const int j = x / KERNEL_SIZE_5;
         const int kj = x - j * KERNEL_SIZE_5;
-        const int ni = get_window_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-        const int nj = get_window_start(j, width,KERNEL_SIZE_5,  NEIGHBORHOOD_SIZE_5, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+        const int nj = get_window_start(j, width,KERNEL_SIZE_5,  NEIGHBORHOOD_SIZE_5);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
         __half2 updt = __float2half2_rn(0.f);
         const int queryIdx = (i - si)*TILE_5 + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILE_5 + (nj+kj - snj);
@@ -307,8 +307,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_5x5_32(
     const int batchHeadOffset = b * query.stride(0) + h * query.stride(1);
     const int si = sy / KERNEL_SIZE_5;
     const int sj = sx / KERNEL_SIZE_5;
-    const int sni = get_window_start(si, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
     __shared__ scalar_t tile[TILE_5*TILE_5][DIM_32+3];
     __shared__ scalar_t kTile[KTILE_5*KTILE_5][DIM_32+3];
 
@@ -347,10 +347,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_5x5_32(
         const int ki = y - i * KERNEL_SIZE_5;
         const int j = x / KERNEL_SIZE_5;
         const int kj = x - j * KERNEL_SIZE_5;
-        const int ni = get_window_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-        const int nj = get_window_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+        const int nj = get_window_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE_5, NEIGHBORHOOD_SIZE_5);
         scalar_t updt = scalar_t(0);
         const int queryIdx = (i - si)*TILE_5 + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILE_5 + (nj+kj - snj);
@@ -396,8 +396,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_7x7_9x9_32(
     const int batchHeadOffset = b * (stride2*height*heads) + h * (stride2*height);
     const int si = sy / KERNEL_SIZE;
     const int sj = sx / KERNEL_SIZE;
-    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
     __shared__ __half2 tile[TILE*TILE][DIM_32+3];
     __shared__ __half2 kTile[KTILE*KTILE][DIM_32+3];
     __half2* query2 = reinterpret_cast<__half2*>(query.data());
@@ -438,10 +438,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_7x7_9x9_32(
         const int ki = y - i * KERNEL_SIZE;
         const int j = x / KERNEL_SIZE;
         const int kj = x - j * KERNEL_SIZE;
-        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
         __half2 updt = __float2half2_rn(0.f);
         const int queryIdx = (i - si)*TILE + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILE + (nj+kj - snj);
@@ -485,8 +485,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_7x7_9x9_32(
     const int batchHeadOffset = b * query.stride(0) + h * query.stride(1);
     const int si = sy / KERNEL_SIZE;
     const int sj = sx / KERNEL_SIZE;
-    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
     __shared__ scalar_t tile[TILE*TILE][DIM_32+3];
     __shared__ scalar_t kTile[KTILE*KTILE][DIM_32+3];
 
@@ -522,10 +522,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_7x7_9x9_32(
         const int ki = y - i * KERNEL_SIZE;
         const int j = x / KERNEL_SIZE;
         const int kj = x - j * KERNEL_SIZE;
-        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
         scalar_t updt = scalar_t(0);
         const int queryIdx = (i - si)*TILE + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILE + (nj+kj - snj);
@@ -571,8 +571,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_11x11_13x13_32(
     const int batchHeadOffset = b * (stride2*height*heads) + h * (stride2*height);
     const int si = sy / KERNEL_SIZE;
     const int sj = sx / KERNEL_SIZE;
-    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
     __shared__ __half2 tile[TILEX*TILEY][DIM_32+3];
     __shared__ __half2 kTile[KTILEX*KTILEY][DIM_32+3];
     __half2* query2 = reinterpret_cast<__half2*>(query.data());
@@ -613,10 +613,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp16_11x11_13x13_32(
         const int ki = y - i * KERNEL_SIZE;
         const int j = x / KERNEL_SIZE;
         const int kj = x - j * KERNEL_SIZE;
-        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
         __half2 updt = __float2half2_rn(0.f);
         const int queryIdx = (i - si)*TILEY + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILEY + (nj+kj - snj);
@@ -660,8 +660,8 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_11x11_13x13_32(
     const int batchHeadOffset = b * query.stride(0) + h * query.stride(1);
     const int si = sy / KERNEL_SIZE;
     const int sj = sx / KERNEL_SIZE;
-    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+    const int sni = get_window_start(si, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+    const int snj = get_window_start(sj, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
     __shared__ memscalar_t tile[TILEX*TILEY][DIM_32+3];
     __shared__ memscalar_t kTile[KTILEX*KTILEY][DIM_32+3];
 
@@ -697,10 +697,10 @@ __global__ void nattenqkrpb_cuda_forward_kernel_fp32_11x11_13x13_32(
         const int ki = y - i * KERNEL_SIZE;
         const int j = x / KERNEL_SIZE;
         const int kj = x - j * KERNEL_SIZE;
-        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
-        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE, 1);
+        const int ni = get_window_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int nj = get_window_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pi = get_pb_start(i, height, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
+        const int pj = get_pb_start(j, width, KERNEL_SIZE, NEIGHBORHOOD_SIZE);
         scalar_t updt = scalar_t(0);
         const int queryIdx = (i - si)*TILEY + (j - sj);
         const int keyIdx = (ni+ki - sni)*KTILEY + (nj+kj - snj);
@@ -1061,7 +1061,7 @@ torch::Tensor nattenqkrpb_cuda_forward_tiled_32(
     int64_t dim = query.size(4);
     int64_t RPB_MAX = rpb.size(1);
     int kernel_size = (RPB_MAX + 1) / 2;
-    CHECK_FEATMAP(height, width, kernel_size, 1);
+    CHECK_FEATMAP(height, width, kernel_size);
     TORCH_CHECK(dim == DIM_32, "nattenqkrpb_cuda_forward_fp32_tiled_32", " only supports 32-dim attention heads.");
     TORCH_CHECK(kernel_size == KERNEL_SIZE_7 || kernel_size == KERNEL_SIZE_5 || kernel_size == KERNEL_SIZE_9 || 
             kernel_size == KERNEL_SIZE_11 || kernel_size == KERNEL_SIZE_13, 
@@ -1141,7 +1141,7 @@ torch::Tensor nattenqkrpb_cuda_forward_fp16_tiled_32(
     int64_t dimhalf = query.size(4) / 2;
     int64_t RPB_MAX = rpb.size(1);
     int kernel_size = (RPB_MAX + 1) / 2;
-    CHECK_FEATMAP(height, width, kernel_size, 1);
+    CHECK_FEATMAP(height, width, kernel_size);
     TORCH_CHECK(dimhalf*2 == query.size(4), "Dims per head must be an even number in FP16.");
     TORCH_CHECK(dimhalf*2 == DIM_32, "nattenqkrpb_cuda_forward_fp16_tiled_32", " only supports 32-dim attention heads.");
     TORCH_CHECK(kernel_size == KERNEL_SIZE_7 || kernel_size == KERNEL_SIZE_5 || kernel_size == KERNEL_SIZE_9 || 
