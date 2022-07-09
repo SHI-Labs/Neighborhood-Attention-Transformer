@@ -23,7 +23,7 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 ### July 9, 2022
 * [CUDA extension v0.12](NATTEN.md) released.
-  * It runs much more efficiently now, up to 40% faster than while using up to 25% less memory compared to Swin's SWSA.
+  * It runs much more efficiently now, up to 40% faster and using up to 25% less memory compared to Swin's SWSA.
   * Improved FP16 throughput.
   * Improved training speed and stability.
   * See [changelog](CHANGELOG.md).
