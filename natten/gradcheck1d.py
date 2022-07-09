@@ -24,7 +24,6 @@ parser.add_argument('-n', '--heads', type=int, default=2)
 parser.add_argument('-x', '--length', type=int, default=9)
 parser.add_argument('-d', '--dim', type=int, default=8)
 parser.add_argument('-k', '--kernel-size', type=int, default=7)
-parser.add_argument('--dilation', type=int, default=1)
 parser.add_argument('--slow', action='store_true', default=False)
 args = parser.parse_args()
 kernel_size = args.kernel_size
@@ -46,13 +45,13 @@ for (dt, dtn, eps, atol, rtol, ndtol, fm) in [
     print(f"Verifying 1D backward pass in {dtn}...")
 
     rpb = torch.randn((args.heads, 2 * kernel_size - 1), **kwargs)
-    variables = [query, key, rpb, args.dilation]
+    variables = [query, key, rpb]
 
     if gradcheck(NATTEN1DQKRPBFunction.apply, variables, eps=eps, atol=atol, rtol=rtol, nondet_tol=ndtol, fast_mode=fm):
         print('1D QK+RPB Gradients Ok')
 
     attn = torch.randn((args.batch_size, args.heads, args.length, kernel_size), **kwargs)
-    variables = [attn, value, args.dilation]
+    variables = [attn, value]
 
     if gradcheck(NATTEN1DAVFunction.apply, variables, eps=eps, atol=atol, rtol=rtol, nondet_tol=0, fast_mode=fm):
         print('1D AV Gradients Ok')

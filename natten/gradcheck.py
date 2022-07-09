@@ -25,7 +25,6 @@ parser.add_argument('-x', '--height', type=int, default=9)
 parser.add_argument('-y', '--width', type=int, default=9)
 parser.add_argument('-d', '--dim', type=int, default=32)
 parser.add_argument('-k', '--kernel-size', type=int, default=7)
-parser.add_argument('--dilation', type=int, default=1)
 parser.add_argument('--slow', action='store_true', default=False)
 args = parser.parse_args()
 kernel_size = args.kernel_size
@@ -47,13 +46,13 @@ for (dt, dtn, eps, atol, rtol, ndtol, fm) in [
     print(f"Verifying backward pass in {dtn}...")
 
     rpb = torch.randn((args.heads, 2 * kernel_size - 1, 2 * kernel_size - 1), **kwargs)
-    variables = [query, key, rpb, args.dilation]
+    variables = [query, key, rpb]
 
     if gradcheck(NATTENQKRPBFunction.apply, variables, eps=eps, atol=atol, rtol=rtol, nondet_tol=ndtol, fast_mode=fm):
         print('QK+RPB Gradients Ok')
 
     attn = torch.randn((args.batch_size, args.heads, args.height, args.width, kernel_size * kernel_size), **kwargs)
-    variables = [attn, value, args.dilation]
+    variables = [attn, value]
 
     if gradcheck(NATTENAVFunction.apply, variables, eps=eps, atol=atol, rtol=rtol, nondet_tol=0, fast_mode=fm):
         print('AV Gradients Ok')
