@@ -4,8 +4,11 @@ All notable changes to the Neighborhood Attention CUDA extension will be documen
 ## [0.12] - 2022-07-09
  
 ### Added
+- Fixed the race condition in K-Backward and V-Backward kernels.
+  - This was handled previously with atomic adds (non-deterministic).
+  - Now the kernels compute inverse neighbors and compute gradients without a race condition.
 - "Tiled" Neighborhood Attention kernels for 5x5, 7x7, 9x9, 11x11, and 13x13 window sizes.
-  - Only applies to QKRPB-Forward and A-Backward.
+  - Applies only to QKRPB-Forward and A-Backward.
   - Only supports dim per head = 32 for now.
     - Try to keep your channels a multiple of 32.
 - Improved FP16 support.
