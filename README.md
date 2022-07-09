@@ -26,11 +26,10 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
   * It runs much more efficiently now, up to 40% faster than while using up to 25% less memory compared to Swin's SWSA.
   * Improved FP16 throughput.
   * Improved training speed and stability.
-  * See [changelog](Changelog.md).
+  * See [changelog](CHANGELOG.md).
 
-CUDA Time | Memory usage
-:-------------------------:|:-------------------------:
-![V012](assets/v012dark.png#gh-dark-mode-only) ![V012](assets/v012light.png#gh-light-mode-only) | ![V012](assets/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/kernelmemory_light.png#gh-light-mode-only)
+![V012](assets/v012dark.png#gh-dark-mode-only) ![V012](assets/v012light.png#gh-light-mode-only)
+![V012](assets/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/kernelmemory_light.png#gh-light-mode-only)
 
 
 ### May 12, 2022
