@@ -22,13 +22,16 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 # News
 
 ### July 9, 2022
-* CUDA extension v0.12 released.
-  * It's much faster now thanks to the "Tiled" implementation of NA ([Notes](NATTEN.md)).
-  * Improved FP16 performance.
+* [CUDA extension v0.12](NATTEN.md) released.
+  * It runs much more efficiently now, up to 40% faster than while using up to 25% less memory compared to Swin's SWSA.
+  * Improved FP16 throughput.
   * Improved training speed and stability.
+  * See [changelog](Changelog.md).
 
-![V012](assets/v012dark.png#gh-dark-mode-only)
-![V012](assets/v012light.png#gh-light-mode-only)
+CUDA Time | Memory usage
+:-------------------------:|:-------------------------:
+![V012](assets/v012dark.png#gh-dark-mode-only) ![V012](assets/v012light.png#gh-light-mode-only) | ![V012](assets/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/kernelmemory_light.png#gh-light-mode-only)
+
 
 ### May 12, 2022
 * [1-D Neighborhood Attention](NATTEN.md) support added!
