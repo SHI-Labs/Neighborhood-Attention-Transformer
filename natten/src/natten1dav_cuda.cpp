@@ -7,13 +7,22 @@ LICENSE file in the root directory of this source tree.
 #include <torch/extension.h>
 #include <vector>
 
-// CUDA forward declaration
+// CUDA forward declarations
 torch::Tensor natten1dav_cuda_forward(
     const torch::Tensor &attn,
     const torch::Tensor &value);
 
-// CUDA backward declaration
+torch::Tensor natten1dav_cuda_forward_fp16(
+    const torch::Tensor &attn,
+    const torch::Tensor &value);
+
+// CUDA backward declarations
 std::vector<torch::Tensor> natten1dav_cuda_backward(
+    const torch::Tensor &d_out,
+    const torch::Tensor &attn,
+    const torch::Tensor &value);
+
+std::vector<torch::Tensor> natten1dav_cuda_backward_fp16(
     const torch::Tensor &d_out,
     const torch::Tensor &attn,
     const torch::Tensor &value);
@@ -26,19 +35,25 @@ std::vector<torch::Tensor> natten1dav_cuda_backward(
 torch::Tensor natten1dav_forward(
     const torch::Tensor &attn,
     const torch::Tensor &value) {
-  CHECK_INPUT(attn);
-  CHECK_INPUT(value);
-  return natten1dav_cuda_forward(attn, value);
+    CHECK_INPUT(attn);
+    CHECK_INPUT(value);
+    bool half = ::detail::scalar_type(value.scalar_type()) == at::ScalarType::Half;
+    if (half)
+        return natten1dav_cuda_forward_fp16(attn, value);
+    return natten1dav_cuda_forward(attn, value);
 }
 
 std::vector<torch::Tensor> natten1dav_backward(
     const torch::Tensor &d_out,
     const torch::Tensor &attn,
     const torch::Tensor &value) {
-  CHECK_INPUT(d_out);
-  CHECK_INPUT(attn);
-  CHECK_INPUT(value);
-  return natten1dav_cuda_backward(d_out, attn, value);
+    CHECK_INPUT(d_out);
+    CHECK_INPUT(attn);
+    CHECK_INPUT(value);
+    bool half = ::detail::scalar_type(value.scalar_type()) == at::ScalarType::Half;
+    if (half)
+        return natten1dav_cuda_backward_fp16(d_out, attn, value);
+    return natten1dav_cuda_backward(d_out, attn, value);
 }
 
 

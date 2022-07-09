@@ -1,14 +1,5 @@
 # Neighborhood Attention
 
-## PyTorch Implementation (new)
-This implementation is based on `F.unfold` and `F.pad`, therefore doesn't require the extension, and can run on a CPU.
-However, it is very inefficient, and uses up a lot of memory (see the figure below).
-### Usage
-Simply import `LegacyNeighborhoodAttention` from `natten`:
-```python
-from natten import LegacyNeighborhoodAttention
-```
-
 ## CUDA Extension
 
 Training time improvement vs CUDA extension version | Throughput vs Accuracy
@@ -59,7 +50,17 @@ Simply import `NeighborhoodAttention` from `natten`:
 ```python
 from natten import NeighborhoodAttention
 ```
-To use the 1D version of NA, simply import `NeighborhoodAttention1d` from `natten`:
+To use the 1D version of NA, simply import `NeighborhoodAttention1D` from `natten`:
 ```python
-from natten import NeighborhoodAttention1d
+from natten import NeighborhoodAttention1D
+```
+
+
+## PyTorch Implementation
+This implementation is based on `F.unfold` and `F.pad`, therefore doesn't require the extension, and can run on a CPU.
+However, it is very inefficient, and uses up a lot of memory (see the figure below).
+### Usage
+Simply import `LegacyNeighborhoodAttention` from `natten`:
+```python
+from natten import LegacyNeighborhoodAttention
 ```

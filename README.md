@@ -21,16 +21,28 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 # News
 
+### July 9, 2022
+* [NA CUDA extension v0.12](NATTEN.md) released.
+  * NA runs much more efficiently now, up to 40% faster and uses up to 25% less memory compared to Swin Transformer’s Shifted Window Self Attention.
+  * Improved FP16 throughput.
+  * Improved training speed and stability.
+  * See [changelog](CHANGELOG.md).
+
+![V012](assets/v012dark.png#gh-dark-mode-only) ![V012](assets/v012light.png#gh-light-mode-only)
+![V012](assets/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/kernelmemory_light.png#gh-light-mode-only)
+
+
 ### May 12, 2022
 * [1-D Neighborhood Attention](NATTEN.md) support added!
 * Moved the kernel to `natten/` now, since there's a single version for all three tasks, and we're adding more features to the extension.
 
 ### April 30, 2022
-* CUDA extension v0.11 released.
+* [NA CUDA extension v0.11](NATTEN.md) released.
   * It's faster in both training and inference, 
   * with a single version for all three tasks (no downstream-specific version)
 * [PyTorch implementation](NATTEN.md) released
   * Works both with and without CUDA, but not very efficient. Try to use the CUDA extension when possible.
+  * See [changelog](CHANGELOG.md).
 
 # Catalog
 - [x] Neighborhood Attention 1D (CUDA)

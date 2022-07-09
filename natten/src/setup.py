@@ -9,19 +9,11 @@ from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 setup(
     name='natcuda',
-    version='0.11',
+    version='0.12',
     author='Ali Hassani',
     author_email='alih@uoregon.edu',
     description='Neighborhood Attention CUDA Kernel',
     ext_modules=[
-        CUDAExtension('nattenav_cuda', [
-            'nattenav_cuda.cpp',
-            'nattenav_cuda_kernel.cu',
-        ]),
-        CUDAExtension('nattenqkrpb_cuda', [
-            'nattenqkrpb_cuda.cpp',
-            'nattenqkrpb_cuda_kernel.cu',
-        ]),
         CUDAExtension('natten1dav_cuda', [
             'natten1dav_cuda.cpp',
             'natten1dav_cuda_kernel.cu',
@@ -29,6 +21,14 @@ setup(
         CUDAExtension('natten1dqkrpb_cuda', [
             'natten1dqkrpb_cuda.cpp',
             'natten1dqkrpb_cuda_kernel.cu',
+        ]),
+        CUDAExtension('nattenav_cuda', [
+            'nattenav_cuda.cpp',
+            'nattenav_cuda_kernel.cu',
+        ]),
+        CUDAExtension('nattenqkrpb_cuda', [
+            'nattenqkrpb_cuda.cpp',
+            'nattenqkrpb_cuda_kernel.cu',
         ]),
     ],
     cmdclass={

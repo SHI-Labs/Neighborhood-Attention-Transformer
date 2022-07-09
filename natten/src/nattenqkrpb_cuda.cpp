@@ -13,8 +13,28 @@ torch::Tensor nattenqkrpb_cuda_forward(
     const torch::Tensor &key,
     const torch::Tensor &rpb);
 
+torch::Tensor nattenqkrpb_cuda_forward_fp16(
+    const torch::Tensor &query,
+    const torch::Tensor &key,
+    const torch::Tensor &rpb);
+
+torch::Tensor nattenqkrpb_cuda_forward_tiled_32(
+    const torch::Tensor &query,
+    const torch::Tensor &key,
+    const torch::Tensor &rpb);
+
+torch::Tensor nattenqkrpb_cuda_forward_fp16_tiled_32(
+    const torch::Tensor &query,
+    const torch::Tensor &key,
+    const torch::Tensor &rpb);
+
 // CUDA backward declarations
 std::vector<torch::Tensor> nattenqkrpb_cuda_backward(
+    const torch::Tensor &d_attn,
+    const torch::Tensor &query,
+    const torch::Tensor &key);
+
+std::vector<torch::Tensor> nattenqkrpb_cuda_backward_fp16(
     const torch::Tensor &d_attn,
     const torch::Tensor &query,
     const torch::Tensor &key);
@@ -28,20 +48,33 @@ torch::Tensor nattenqkrpb_forward(
     const torch::Tensor &query,
     const torch::Tensor &key,
     const torch::Tensor &rpb) {
-  CHECK_INPUT(query);
-  CHECK_INPUT(key);
-  CHECK_INPUT(rpb);
-  return nattenqkrpb_cuda_forward(query, key, rpb);
+    CHECK_INPUT(query);
+    CHECK_INPUT(key);
+    CHECK_INPUT(rpb);
+    int dim = query.size(4);
+    int kernel_size = (rpb.size(1) + 1) / 2;
+    bool half = ::detail::scalar_type(query.scalar_type()) == at::ScalarType::Half;
+    if ((kernel_size == 7 || kernel_size == 5 || kernel_size == 9 || kernel_size == 11 || kernel_size == 13) && dim == 32){
+        if (half)
+            return nattenqkrpb_cuda_forward_fp16_tiled_32(query, key, rpb);
+        return nattenqkrpb_cuda_forward_tiled_32(query, key, rpb);
+    }
+    if (half)
+        return nattenqkrpb_cuda_forward_fp16(query, key, rpb);
+    return nattenqkrpb_cuda_forward(query, key, rpb);
 }
 
 std::vector<torch::Tensor> nattenqkrpb_backward(
     const torch::Tensor &d_attn,
     const torch::Tensor &query,
     const torch::Tensor &key) {
-  CHECK_INPUT(d_attn);
-  CHECK_INPUT(query);
-  CHECK_INPUT(key);
-  return nattenqkrpb_cuda_backward(d_attn, query, key);
+    CHECK_INPUT(d_attn);
+    CHECK_INPUT(query);
+    CHECK_INPUT(key);
+    bool half = ::detail::scalar_type(query.scalar_type()) == at::ScalarType::Half;
+    if (half)
+        return nattenqkrpb_cuda_backward_fp16(d_attn, query, key);
+    return nattenqkrpb_cuda_backward(d_attn, query, key);
 }
 
 
