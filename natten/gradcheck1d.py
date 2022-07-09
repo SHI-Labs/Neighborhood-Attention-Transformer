@@ -8,8 +8,8 @@ The defaults provided should run on standard GPUs.
 This source code is licensed under the license found in the
 LICENSE file in the root directory of this source tree.
 """
-import natten
-from natten.nattencuda1d import NATTEN1DAVFunction, NATTEN1DQKRPBFunction
+from . import *
+from nattencuda1d import NATTEN1DAVFunction, NATTEN1DQKRPBFunction
 import torch
 from torch.autograd import gradcheck
 import argparse
