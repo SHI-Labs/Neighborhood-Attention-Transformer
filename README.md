@@ -21,6 +21,15 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 
 # News
 
+### July 9, 2022
+* CUDA extension v0.12 released.
+  * It's much faster now thanks to the "Tiled" implementation of NA ([Notes](NATTEN.md)).
+  * Improved FP16 performance.
+  * Improved training speed and stability.
+
+![V012](assets/v012dark.png#gh-dark-mode-only)
+![V012](assets/v012light.png#gh-light-mode-only)
+
 ### May 12, 2022
 * [1-D Neighborhood Attention](NATTEN.md) support added!
 * Moved the kernel to `natten/` now, since there's a single version for all three tasks, and we're adding more features to the extension.
