@@ -77,7 +77,7 @@ NAT-Tiny reaches 83.2% top-1 accuracy on ImageNet with only
 ![computeplot_light](assets/computeplot_light.png#gh-light-mode-only)
 
 # How it works
-Natural Attention localizes the query's (red) receptive field to its nearest neighborhood (green). 
+Neighborhood Attention localizes the query's (red) receptive field to its nearest neighborhood (green). 
 This is equivalent to dot-product self attention when the neighborhood size is identical to the image dimensions. 
 Note that the edges are special (edge) cases.
 
