@@ -43,7 +43,7 @@ class NATTENAVFunction(Function):
         attn = attn.contiguous()
         value = value.contiguous()
         out = nattenav_cuda.forward(
-                attn, 
+                attn,
                 value)
         ctx.save_for_backward(attn, value)
         return out
@@ -114,8 +114,8 @@ class NeighborhoodAttention(nn.Module):
         pad_l = pad_t = pad_r = pad_b = 0
         if H < self.kernel_size or W < self.kernel_size:
             pad_l = pad_t = 0
-            pad_r = max(0, self.window_size - W)
-            pad_b = max(0, self.window_size - H)
+            pad_r = max(0, self.kernel_size - W)
+            pad_b = max(0, self.kernel_size - H)
             x = pad(x, (0, 0, pad_l, pad_r, pad_t, pad_b))
             _, H, W, _ = x.shape
         qkv = self.qkv(x).reshape(B, H, W, 3, self.num_heads, self.head_dim).permute(3, 0, 4, 1, 2, 5)
