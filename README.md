@@ -1,13 +1,23 @@
 # Neighborhood Attention Transformers
 
+[<img src="https://img.shields.io/badge/Extension-Neighborhood%20Attention%20CUDA%20Extension%20for%20PyTorch-%23fc6562" />](NATTEN.md)
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Trasnformer-%2300B0F0" /></a>
+<a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
+
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
-**Powerful hierarchical vision transformers based on Neighborhood Attention, a sliding window self attention mechanism.**
+**Powerful sliding-window-attention-based hierarchical vision transformers.**
 
-Neighborhood Attention (NA) was introduced in our original paper, [NAT](NAT.md), and runs efficiently with our CUDA extension to PyTorch, [NATTEN](NATTEN.md).
+Neighborhood Attention (NA, local attention) was introduced in our original paper, 
+[NAT](NAT.md), and runs efficiently with our CUDA extension to PyTorch, [NATTEN](NATTEN.md).
 
-We recently introduced a new model, [DiNAT](DiNAT.md), which extends NA by dilating neighborhoods (DiNA).
+We recently introduced a new model, [DiNAT](DiNAT.md), which extends NA by dilating neighborhoods (DiNA, sparse global attention).
+
+Combinations of NA/DiNA are capable of preserving locality, 
+expanding the receptive field exponentially, 
+and capturing longer-range inter-dependencies, 
+leading to significant performance boosts in downstream vision tasks.
 
 
 # Dilated Neighborhood Attention :fire:
@@ -16,7 +26,7 @@ We recently introduced a new model, [DiNAT](DiNAT.md), which extends NA by dilat
 
 <a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-2209.15001-orange" /></a>
 
-A new hierarchical vision transformer based on Neighborhood Attention (local) and Dilated Neighborhood Attention (sparse global).
+A new hierarchical vision transformer based on Neighborhood Attention (local attention) and Dilated Neighborhood Attention (sparse global attention).
 
 Check out the [DiNAT README](DiNAT.md).
 
@@ -25,7 +35,7 @@ Check out the [DiNAT README](DiNAT.md).
 
 <a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-2204.07143-orange" /></a>
 
-Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
+Our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md), the first efficient sliding-window local attention.
 
 # How Neighborhood Attention works
 Neighborhood Attention localizes the query token's (red) receptive field to its nearest neighboring tokens in the key-value pair (green). 
