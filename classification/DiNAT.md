@@ -2,15 +2,10 @@
 
 Make sure to set up your environment according to the [classification README](README.md).
 
-## Training on ImageNet-1K
-
-Details will be released soon.
+## Training and on ImageNet-1K
+Training and evaluation is identical to [NAT](NAT.md).
 
 ## Training on ImageNet-22K
-
-Details will be released soon.
-
-## Validation on ImageNet-1K
 
 Details will be released soon.
 
