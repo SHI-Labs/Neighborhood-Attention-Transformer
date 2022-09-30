@@ -1,15 +1,48 @@
 # Neighborhood Attention Transformers
 
+<a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Trasnformer-%2300B0F0" /></a>
+[<img src="https://img.shields.io/badge/Extension-Neighborhood%20Attention%20CUDA%20Extension%20for%20PyTorch-%23fc6562" />](NATTEN.md)
+
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
+**Powerful hierarchical vision transformers based on sliding window attention.**
+
+Neighborhood Attention (NA, local attention) was introduced in our original paper, 
+[NAT](NAT.md), and runs efficiently with our CUDA extension to PyTorch, [NATTEN](NATTEN.md).
+
+We recently introduced a new model, [DiNAT](DiNAT.md), which extends NA by dilating neighborhoods (DiNA, sparse global attention).
+
+Combinations of NA/DiNA are capable of preserving locality, 
+expanding the receptive field exponentially, 
+and capturing longer-range inter-dependencies, 
+leading to significant performance boosts in downstream vision tasks.
+
 
 # Dilated Neighborhood Attention :fire:
-Check out our new model, [Dilated Neighborhood Attention Transformer (DiNAT)](DiNAT.md).
+![DiNAT-Abs](assets/dinat/radar_dark.png#gh-dark-mode-only)
+![DiNAT-Abs](assets/dinat/radar_light.png#gh-light-mode-only)
+
+A new hierarchical vision transformer based on Neighborhood Attention (local attention) and Dilated Neighborhood Attention (sparse global attention) that enjoys significant performance boost in downstream tasks.
+
+Check out the [DiNAT README](DiNAT.md).
 
 
 # Neighborhood Attention Transformer
-Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
+![NAT-Abs](assets/nat/computeplot_dark.png#gh-dark-mode-only)
+![NAT-Abs](assets/nat/computeplot_light.png#gh-light-mode-only)
+
+Our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md), the first efficient sliding-window local attention.
+
+# How Neighborhood Attention works
+Neighborhood Attention localizes the query token's (red) receptive field to its nearest neighboring tokens in the key-value pair (green). 
+This is equivalent to dot-product self attention when the neighborhood size is identical to the image dimensions. 
+Note that the edges are special (edge) cases.
+
+![720p_fast_dm](assets/nat/720p_fast_dm.gif#gh-dark-mode-only)
+![720p_fast_lm](assets/nat/720p_fast_lm.gif#gh-light-mode-only)
+
 
 # News
 
@@ -24,11 +57,7 @@ Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
   * Improved FP16 throughput.
   * Improved training speed and stability.
   * See [changelog](CHANGELOG.md).
-
-![V012](assets/natten/v012dark.png#gh-dark-mode-only) ![V012](assets/natten/v012light.png#gh-light-mode-only)
-![V012](assets/natten/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/natten/kernelmemory_light.png#gh-light-mode-only)
-
-
+  
 ### May 12, 2022
 * [1-D Neighborhood Attention](NATTEN.md) support added!
 * Moved the kernel to `natten/` now, since there's a single version for all three tasks, and we're adding more features to the extension.
@@ -40,6 +69,7 @@ Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
 * [PyTorch implementation](NATTEN.md) released
   * Works both with and without CUDA, but not very efficient. Try to use the CUDA extension when possible.
   * See [changelog](CHANGELOG.md).
+
 
 # Catalog
 - [x] Neighborhood Attention 1D (CUDA)

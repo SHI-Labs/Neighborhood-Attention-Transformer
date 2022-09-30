@@ -1,4 +1,7 @@
 # Neighborhood Attention Transformer
+
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-2204.07143-orange" /></a>
+
 Preprint Link: [Neighborhood Attention Transformer
 ](https://arxiv.org/abs/2204.07143)
 
@@ -37,18 +40,6 @@ Experimental results on NAT are competitive;
 NAT-Tiny reaches 83.2% top-1 accuracy on ImageNet with only 
 4.3 GFLOPs and 28M parameters, 
 51.4% mAP on MS-COCO and 48.4% mIoU on ADE20k.
-
-
-![computeplot_dark](assets/nat/computeplot_dark.png#gh-dark-mode-only)
-![computeplot_light](assets/nat/computeplot_light.png#gh-light-mode-only)
-
-# How it works
-Neighborhood Attention localizes the query's (red) receptive field to its nearest neighborhood (green). 
-This is equivalent to dot-product self attention when the neighborhood size is identical to the image dimensions. 
-Note that the edges are special (edge) cases.
-
-![720p_fast_dm](assets/nat/720p_fast_dm.gif#gh-dark-mode-only)
-![720p_fast_lm](assets/nat/720p_fast_lm.gif#gh-light-mode-only)
 
 ## Implementation
 We wrote a [PyTorch CUDA extension](NATTEN.md) to parallelize NA. 
