@@ -21,10 +21,8 @@ leading to significant performance boosts in downstream vision tasks.
 
 
 # Dilated Neighborhood Attention :fire:
-![DiNAT-Intro](assets/dinat/radar_dark.png#gh-dark-mode-only)
-![DiNAT-Intro](assets/dinat/radar_light.png#gh-light-mode-only)
-
-<a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-2209.15001-orange" /></a>
+![DiNAT-Abs](assets/dinat/radar_dark.png#gh-dark-mode-only)
+![DiNAT-Abs](assets/dinat/radar_light.png#gh-light-mode-only)
 
 A new hierarchical vision transformer based on Neighborhood Attention (local attention) and Dilated Neighborhood Attention (sparse global attention).
 
@@ -32,8 +30,8 @@ Check out the [DiNAT README](DiNAT.md).
 
 
 # Neighborhood Attention Transformer
-
-<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-2204.07143-orange" /></a>
+![NAT-Abs](assets/nat/computeplot_dark.png#gh-dark-mode-only)
+![NAT-Abs](assets/nat/computeplot_light.png#gh-light-mode-only)
 
 Our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md), the first efficient sliding-window local attention.
 
