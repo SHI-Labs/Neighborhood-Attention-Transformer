@@ -21,6 +21,8 @@ from mmdet.models import build_detector
 from mmdet.utils import collect_env, get_root_logger
 
 from nat import *
+from dinat import *
+from dinats import *
 
 
 def parse_args():

@@ -8,11 +8,11 @@ from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 setup(
-    name='natcuda',
-    version='0.12',
+    name='natten',
+    version='0.13',
     author='Ali Hassani',
     author_email='alih@uoregon.edu',
-    description='Neighborhood Attention CUDA Kernel',
+    description='Neighborhood Attention CUDA Extension',
     ext_modules=[
         CUDAExtension('natten1dav_cuda', [
             'natten1dav_cuda.cpp',
