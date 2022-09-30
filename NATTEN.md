@@ -1,6 +1,9 @@
 # Neighborhood Attention CUDA Extension (NATTEN)
 NATTEN is a CUDA extension to PyTorch.
 
+![V012](assets/natten/v012dark.png#gh-dark-mode-only) ![V012](assets/natten/v012light.png#gh-light-mode-only)
+![V012](assets/natten/kernelmemory_dark.png#gh-dark-mode-only) ![V012](assets/natten/kernelmemory_light.png#gh-light-mode-only)
+
 ### Requirements
 The following are the recommended versions of these libraries and are strongly encouraged for speed:
 ```shell
