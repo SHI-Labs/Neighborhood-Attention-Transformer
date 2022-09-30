@@ -16,7 +16,7 @@ Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
 # News
 
 ### September 29, 2022
-* New preprint: [Dilated Neighborhood Attention](DiNAT.md).
+* New preprint: [Dilated Neighborhood Attention Transformer](DiNAT.md).
 * [NA CUDA extension v0.13](NATTEN.md) released with dilation support!
   * See [changelog](CHANGELOG.md).
 
