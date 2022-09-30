@@ -1,15 +1,13 @@
 # Neighborhood Attention Transformers
 
-[<img src="https://img.shields.io/badge/Extension-Neighborhood%20Attention%20CUDA%20Extension%20for%20PyTorch-%23fc6562" />](NATTEN.md)
-
-<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Trasnformer-%2300B0F0" /></a>
-
 <a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Trasnformer-%2300B0F0" /></a>
+[<img src="https://img.shields.io/badge/Extension-Neighborhood%20Attention%20CUDA%20Extension%20for%20PyTorch-%23fc6562" />](NATTEN.md)
 
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
-**Powerful sliding-window-attention-based hierarchical vision transformers.**
+**Powerful hierarchical vision transformers based on sliding window attention.**
 
 Neighborhood Attention (NA, local attention) was introduced in our original paper, 
 [NAT](NAT.md), and runs efficiently with our CUDA extension to PyTorch, [NATTEN](NATTEN.md).
