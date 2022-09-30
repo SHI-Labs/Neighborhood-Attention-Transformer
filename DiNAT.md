@@ -48,11 +48,11 @@ These variants can provide better throughput on CUDA, at the expense of slightly
 
 | Model | Resolution | Kernel size | # of Params | FLOPs | Pre-training | Top-1 |
 |---|---|---|---|---|---|---|
-| DiNAT<sub>s</sub>-Tiny | 224x224 | 7x7 | 28M | 4.5G | - | [81.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_1k_224.pth) |
-| DiNAT<sub>s</sub>-Small | 224x224 | 7x7 | 50M | 8.7G | - | [83.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_1k_224.pth) |
-| DiNAT<sub>s</sub>-Base | 224x224 | 7x7 | 88M | 15.4G | - | [83.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_1k_224.pth) |
-| DiNAT<sub>s</sub>-Large | 224x224 | 7x7 | 197M | 34.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [86.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_1k_224.pth) |
-| DiNAT<sub>s</sub>-Large | 384x384 | 7x7 | 197M | 101.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [87.4%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_1k_384.pth) |
+| DiNAT<sub>s</sub>-Tiny | 224x224 | 7x7 | 28M | 4.5G | - | [81.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Small | 224x224 | 7x7 | 50M | 8.7G | - | [83.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Base | 224x224 | 7x7 | 88M | 15.4G | - | [83.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Large | 224x224 | 7x7 | 197M | 34.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [86.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Large | 384x384 | 7x7 | 197M | 101.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [87.4%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_384.pth) |
 
 ### Isotropic variants
 
@@ -106,7 +106,7 @@ Details on training and validation are provided in [detection](detection/DiNAT.m
 ### DiNAT<sub>s</sub>
 | Backbone | Network | # of Params | FLOPs | mIoU | mIoU (multi-scale) | Pre-training | Checkpoint |
 |---|---|---|---|---|---|---|---|
-| DiNAT<sub>s</sub>-Tiny | UPerNet| 60M | 941G | 46.0 | 47.4 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_tiny.pth) |
+| DiNAT<sub>s</sub>-Tiny | UPerNet| 60M | 941G | 46.0 | 47.4 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_tiny.pth) |
 | DiNAT<sub>s</sub>-Small | UPerNet | 81M | 1030G | 48.6 | 49.9 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_small.pth) |
 | DiNAT<sub>s</sub>-Base | UPerNet | 121M | 1173G | 49.4 | 50.2 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_base.pth) |
 | DiNAT<sub>s</sub>-Large | UPerNet | 234M | 2466G | 53.4 | 54.6 | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_large.pth) |

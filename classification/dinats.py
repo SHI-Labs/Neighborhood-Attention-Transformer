@@ -16,7 +16,15 @@ from natten import NeighborhoodAttention2D as NeighborhoodAttention
 from nat import Mlp
 
 model_urls = {
-    # TODO: Release checkpoints
+    # ImageNet-1K
+    "dinat_s_tiny_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth",
+    "dinat_s_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth",
+    "dinat_s_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth",
+    "dinat_s_large_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_224.pth",
+    "dinat_s_large_1k_384": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_384.pth",
+
+    # ImageNet-22K
+    "dinat_s_large_21k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth",
 }
 
 
@@ -305,25 +313,6 @@ def dinat_s_base(pretrained=False, **kwargs):
 
 
 @register_model
-def dinat_s_large_21k(pretrained=False, **kwargs):
-    model = DiNAT_s(depths=[2, 2, 18, 2], num_heads=[4, 8, 16, 32], embed_dim=192, mlp_ratio=4,
-                    drop_path_rate=0.2,
-                    kernel_size=7,
-                    dilations=[
-                        [1, 8],
-                        [1, 4],
-                        [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],
-                        [1, 1],
-                    ],
-                    **kwargs)
-    if pretrained:
-        url = model_urls['dinat_s_large_21k']
-        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
-        model.load_state_dict(checkpoint)
-    return model
-
-
-@register_model
 def dinat_s_large(pretrained=False, **kwargs):
     model = DiNAT_s(depths=[2, 2, 18, 2], num_heads=[4, 8, 16, 32], embed_dim=192, mlp_ratio=4,
                     drop_path_rate=0.35,
@@ -356,6 +345,25 @@ def dinat_s_large_384(pretrained=False, **kwargs):
                     **kwargs)
     if pretrained:
         url = model_urls['dinat_s_large_1k_384']
+        checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
+        model.load_state_dict(checkpoint)
+    return model
+
+
+@register_model
+def dinat_s_large_21k(pretrained=False, **kwargs):
+    model = DiNAT_s(depths=[2, 2, 18, 2], num_heads=[4, 8, 16, 32], embed_dim=192, mlp_ratio=4,
+                    drop_path_rate=0.2,
+                    kernel_size=7,
+                    dilations=[
+                        [1, 8],
+                        [1, 4],
+                        [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],
+                        [1, 1],
+                    ],
+                    **kwargs)
+    if pretrained:
+        url = model_urls['dinat_s_large_21k']
         checkpoint = torch.hub.load_state_dict_from_url(url=url, map_location="cpu")
         model.load_state_dict(checkpoint)
     return model
