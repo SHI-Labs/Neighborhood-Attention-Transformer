@@ -24,7 +24,7 @@ leading to significant performance boosts in downstream vision tasks.
 ![DiNAT-Abs](assets/dinat/radar_dark.png#gh-dark-mode-only)
 ![DiNAT-Abs](assets/dinat/radar_light.png#gh-light-mode-only)
 
-A new hierarchical vision transformer based on Neighborhood Attention (local attention) and Dilated Neighborhood Attention (sparse global attention).
+A new hierarchical vision transformer based on Neighborhood Attention (local attention) and Dilated Neighborhood Attention (sparse global attention) that enjoys significant performance boost in downstream tasks.
 
 Check out the [DiNAT README](DiNAT.md).
 
