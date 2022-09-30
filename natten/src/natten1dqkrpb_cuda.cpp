@@ -11,23 +11,27 @@ LICENSE file in the root directory of this source tree.
 torch::Tensor natten1dqkrpb_cuda_forward(
     const torch::Tensor &query,
     const torch::Tensor &key,
-    const torch::Tensor &rpb);
+    const torch::Tensor &rpb,
+    const int dilation);
 
 torch::Tensor natten1dqkrpb_cuda_forward_fp16(
     const torch::Tensor &query,
     const torch::Tensor &key,
-    const torch::Tensor &rpb);
+    const torch::Tensor &rpb,
+    const int dilation);
 
 // CUDA backward declarations
 std::vector<torch::Tensor> natten1dqkrpb_cuda_backward(
     const torch::Tensor &d_attn,
     const torch::Tensor &query,
-    const torch::Tensor &key);
+    const torch::Tensor &key,
+    const int dilation);
 
 std::vector<torch::Tensor> natten1dqkrpb_cuda_backward_fp16(
     const torch::Tensor &d_attn,
     const torch::Tensor &query,
-    const torch::Tensor &key);
+    const torch::Tensor &key,
+    const int dilation);
 
 // C++ interface
 #define CHECK_CUDA(x) TORCH_CHECK(x.device().is_cuda(), #x " must be a CUDA tensor")
@@ -37,27 +41,29 @@ std::vector<torch::Tensor> natten1dqkrpb_cuda_backward_fp16(
 torch::Tensor natten1dqkrpb_forward(
     const torch::Tensor &query,
     const torch::Tensor &key,
-    const torch::Tensor &rpb) {
+    const torch::Tensor &rpb,
+    const int dilation) {
     CHECK_INPUT(query);
     CHECK_INPUT(key);
     CHECK_INPUT(rpb);
     bool half = ::detail::scalar_type(query.scalar_type()) == at::ScalarType::Half;
     if (half)
-        return natten1dqkrpb_cuda_forward_fp16(query, key, rpb);
-    return natten1dqkrpb_cuda_forward(query, key, rpb);
+        return natten1dqkrpb_cuda_forward_fp16(query, key, rpb, dilation);
+    return natten1dqkrpb_cuda_forward(query, key, rpb, dilation);
 }
 
 std::vector<torch::Tensor> natten1dqkrpb_backward(
     const torch::Tensor &d_attn,
     const torch::Tensor &query,
-    const torch::Tensor &key) {
+    const torch::Tensor &key,
+    const int dilation) {
     CHECK_INPUT(d_attn);
     CHECK_INPUT(query);
     CHECK_INPUT(key);
     bool half = ::detail::scalar_type(query.scalar_type()) == at::ScalarType::Half;
     if (half)
-        return natten1dqkrpb_cuda_backward_fp16(d_attn, query, key);
-    return natten1dqkrpb_cuda_backward(d_attn, query, key);
+        return natten1dqkrpb_cuda_backward_fp16(d_attn, query, key, dilation);
+    return natten1dqkrpb_cuda_backward(d_attn, query, key, dilation);
 }
 
 

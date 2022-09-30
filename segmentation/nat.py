@@ -11,7 +11,7 @@ from timm.models.layers import DropPath
 from mmcv.runner import load_checkpoint
 from mmseg.utils import get_root_logger
 from mmseg.models.builder import BACKBONES
-from natten import NeighborhoodAttention
+from natten import NeighborhoodAttention2D as NeighborhoodAttention
 
 
 class ConvTokenizer(nn.Module):

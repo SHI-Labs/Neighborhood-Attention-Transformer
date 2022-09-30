@@ -21,6 +21,8 @@ from mmseg.models import build_segmentor
 from mmseg.utils import collect_env, get_root_logger
 
 from nat import *
+from dinat import *
+from dinats import *
 
 
 def parse_args():

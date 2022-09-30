@@ -24,6 +24,9 @@ from timm.data import create_dataset, create_loader, resolve_data_config, RealLa
 from timm.utils import accuracy, AverageMeter, natural_key, setup_default_logging, set_jit_legacy
 
 from nat import *
+from dinat import *
+from dinats import *
+from dinatiso import *
 from natten.extras import get_imagenet_gflops as get_gflops
 from natten.extras import get_mparams
 

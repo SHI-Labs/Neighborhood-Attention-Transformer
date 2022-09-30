@@ -7,6 +7,8 @@ from mmcv import Config, DictAction
 
 from mmdet.models import build_detector
 from nat import *
+from dinat import *
+from dinats import *
 from natten.extras import get_gflops, get_mparams
 
 

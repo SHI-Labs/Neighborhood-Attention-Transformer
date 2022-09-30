@@ -1,0 +1,14 @@
+model: dinat_large
+lr: 5e-5
+cooldown_epochs: 0
+warmup_epochs: 0
+epochs: 30
+amp: False
+batch_size: 64
+sched: linear
+sched_epochwise: False
+weight_decay: 1e-4
+cutmix: 0.0
+mixup: 0.0
+mixup_prob: 0.0
+img_size: 224

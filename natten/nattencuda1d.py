@@ -33,54 +33,58 @@ else:
 
 class NATTEN1DAVFunction(Function):
     """
-    1D AV autograd function
+    AV autograd function
     Computes neighborhood attention outputs given attention weights, and values.
     This calls the `AV` kernel.
     """
     @staticmethod
     @custom_fwd(cast_inputs=torch.float16)
-    def forward(ctx, attn, value):
+    def forward(ctx, attn, value, dilation):
         attn = attn.contiguous()
         value = value.contiguous()
         out = natten1dav_cuda.forward(
                 attn, 
-                value)
+                value, 
+                dilation)
         ctx.save_for_backward(attn, value)
+        ctx.dilation = dilation
         return out
 
     @staticmethod
     @custom_bwd
     def backward(ctx, grad_out):
         outputs = natten1dav_cuda.backward(
-            grad_out.contiguous(), ctx.saved_variables[0], ctx.saved_variables[1])
+            grad_out.contiguous(), ctx.saved_variables[0], ctx.saved_variables[1], ctx.dilation)
         d_attn, d_value = outputs
         return d_attn, d_value, None
 
 
 class NATTEN1DQKRPBFunction(Function):
     """
-    1D QK+RPB autograd function
+    QK+RPB autograd function
     Computes neighborhood attention weights given queries and keys,
     and adds relative positional biases.
     This calls the `QKRPB` kernel.
     """
     @staticmethod
     @custom_fwd(cast_inputs=torch.float16)
-    def forward(ctx, query, key, rpb):
+    def forward(ctx, query, key, rpb, dilation):
         query = query.contiguous()
         key = key.contiguous()
         attn = natten1dqkrpb_cuda.forward(
                 query,
                 key,
-                rpb)
+                rpb, 
+                dilation)
         ctx.save_for_backward(query, key)
+        ctx.dilation = dilation
         return attn
 
     @staticmethod
     @custom_bwd
     def backward(ctx, grad_out):
         outputs = natten1dqkrpb_cuda.backward(
-            grad_out.contiguous(), ctx.saved_variables[0], ctx.saved_variables[1])
+            grad_out.contiguous(), ctx.saved_variables[0], ctx.saved_variables[1], ctx.dilation)
         d_query, d_key, d_rpb = outputs
         return d_query, d_key, d_rpb, None
 
@@ -90,7 +94,8 @@ class NeighborhoodAttention1D(nn.Module):
     Neighborhood Attention 1D Module
     """
     def __init__(self, dim, kernel_size, num_heads,
-                 qkv_bias=True, qk_scale=None, attn_drop=0., proj_drop=0.):
+                 qkv_bias=True, qk_scale=None, attn_drop=0., proj_drop=0.,
+                 dilation=None):
         super().__init__()
         self.num_heads = num_heads
         self.head_dim = dim // self.num_heads
@@ -98,6 +103,8 @@ class NeighborhoodAttention1D(nn.Module):
         assert kernel_size > 1 and kernel_size % 2 == 1, \
             f"Kernel size must be an odd number greater than 1, got {kernel_size}."
         self.kernel_size = kernel_size
+        self.dilation = dilation or 1
+        self.window_size = self.kernel_size * self.dilation
 
         self.qkv = nn.Linear(dim, dim * 3, bias=qkv_bias)
         self.rpb = nn.Parameter(torch.zeros(num_heads, (2 * kernel_size - 1)))
@@ -110,20 +117,23 @@ class NeighborhoodAttention1D(nn.Module):
         B, Lp, C = x.shape
         L = Lp
         pad_l = pad_r = 0
-        if L < self.kernel_size:
-            pad_r = max(0, self.kernel_size - L)
+        if L < self.window_size:
+            pad_r = max(0, self.window_size - L)
             x = pad(x, (0, 0, pad_l, pad_r))
             _, L, _ = x.shape
         qkv = self.qkv(x).reshape(B, L, 3, self.num_heads, self.head_dim).permute(2, 0, 3, 1, 4)
         q, k, v = qkv[0], qkv[1], qkv[2]
         q = q * self.scale
-        attn = NATTEN1DQKRPBFunction.apply(q, k, self.rpb)
+        attn = NATTEN1DQKRPBFunction.apply(q, k, self.rpb, self.dilation)
         attn = attn.softmax(dim=-1)
         attn = self.attn_drop(attn)
-        x = NATTEN1DAVFunction.apply(attn, v)
+        x = NATTEN1DAVFunction.apply(attn, v, self.dilation)
         x = x.permute(0, 2, 1, 3).reshape(B, L, C)
         if pad_r:
             x = x[:, :Lp, :]
 
         return self.proj_drop(self.proj(x))
+
+    def extra_repr(self) -> str:
+        return f'kernel_size={self.kernel_size}, dilation={self.dilation}, head_dim={self.head_dim}, num_heads={self.num_heads}'
 

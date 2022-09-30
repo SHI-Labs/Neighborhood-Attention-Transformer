@@ -1,6 +1,17 @@
 # CUDA Extension Changelog
 All notable changes to the Neighborhood Attention CUDA extension will be documented in this file.
  
+## [0.13] - 2022-09-29
+ 
+### Added
+- Added dilation support to all kernels, including tiled NA kernels.
+ 
+### Changed
+- Renamed `NeighborhoodAttention` to `NeighborhoodAttention2D` in the python interface.
+  - `NeighborhoodAttention` is now deprecated and will be removed in future versions.
+- Renamed `NeighborhoodAttention` to `NeighborhoodAttention2D` in the python interface.
+  - `NeighborhoodAttention` is now deprecated and will be removed in future versions.
+ 
 ## [0.12] - 2022-07-09
  
 ### Added

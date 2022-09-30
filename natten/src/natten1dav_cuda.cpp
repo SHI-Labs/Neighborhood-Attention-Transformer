@@ -10,22 +10,26 @@ LICENSE file in the root directory of this source tree.
 // CUDA forward declarations
 torch::Tensor natten1dav_cuda_forward(
     const torch::Tensor &attn,
-    const torch::Tensor &value);
+    const torch::Tensor &value,
+    const int dilation);
 
 torch::Tensor natten1dav_cuda_forward_fp16(
     const torch::Tensor &attn,
-    const torch::Tensor &value);
+    const torch::Tensor &value,
+    const int dilation);
 
 // CUDA backward declarations
 std::vector<torch::Tensor> natten1dav_cuda_backward(
     const torch::Tensor &d_out,
     const torch::Tensor &attn,
-    const torch::Tensor &value);
+    const torch::Tensor &value,
+    const int dilation);
 
 std::vector<torch::Tensor> natten1dav_cuda_backward_fp16(
     const torch::Tensor &d_out,
     const torch::Tensor &attn,
-    const torch::Tensor &value);
+    const torch::Tensor &value,
+    const int dilation);
 
 // C++ interface
 #define CHECK_CUDA(x) TORCH_CHECK(x.device().is_cuda(), #x " must be a CUDA tensor")
@@ -34,26 +38,28 @@ std::vector<torch::Tensor> natten1dav_cuda_backward_fp16(
 
 torch::Tensor natten1dav_forward(
     const torch::Tensor &attn,
-    const torch::Tensor &value) {
+    const torch::Tensor &value,
+    const int dilation) {
     CHECK_INPUT(attn);
     CHECK_INPUT(value);
     bool half = ::detail::scalar_type(value.scalar_type()) == at::ScalarType::Half;
     if (half)
-        return natten1dav_cuda_forward_fp16(attn, value);
-    return natten1dav_cuda_forward(attn, value);
+        return natten1dav_cuda_forward_fp16(attn, value, dilation);
+    return natten1dav_cuda_forward(attn, value, dilation);
 }
 
 std::vector<torch::Tensor> natten1dav_backward(
     const torch::Tensor &d_out,
     const torch::Tensor &attn,
-    const torch::Tensor &value) {
+    const torch::Tensor &value,
+    const int dilation) {
     CHECK_INPUT(d_out);
     CHECK_INPUT(attn);
     CHECK_INPUT(value);
     bool half = ::detail::scalar_type(value.scalar_type()) == at::ScalarType::Half;
     if (half)
-        return natten1dav_cuda_backward_fp16(d_out, attn, value);
-    return natten1dav_cuda_backward(d_out, attn, value);
+        return natten1dav_cuda_backward_fp16(d_out, attn, value, dilation);
+    return natten1dav_cuda_backward(d_out, attn, value, dilation);
 }
 
 

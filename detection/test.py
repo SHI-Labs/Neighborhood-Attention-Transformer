@@ -21,6 +21,8 @@ from mmdet.datasets import (build_dataloader, build_dataset,
 from mmdet.models import build_detector, build_backbone
 
 from nat import *
+from dinat import *
+from dinats import *
 
 
 def parse_args():

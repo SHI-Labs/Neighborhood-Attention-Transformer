@@ -18,6 +18,8 @@ from mmseg.datasets import build_dataloader, build_dataset
 from mmseg.models import build_segmentor
 
 from nat import *
+from dinat import *
+from dinats import *
 
 
 def parse_args():
