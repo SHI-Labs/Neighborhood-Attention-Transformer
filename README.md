@@ -1,7 +1,5 @@
 # Neighborhood Attention Transformers
 
-
-
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
@@ -49,7 +47,8 @@ Check our original paper, [Neighborhood Attention Transformer (NAT)](NAT.md).
 - [ ] Neighborhood Attention 1D (PyTorch)
 - [x] Neighborhood Attention 2D (PyTorch)
 - [x] Dilation support
-- [ ] Zeros/Valid padding support
+- [ ] BFloat16 support (coming soon)
+- [ ] Zeros/Valid padding support (coming soon)
 - [ ] HuggingFace Demo
 
 

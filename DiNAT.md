@@ -27,8 +27,6 @@ We believe combinations of NA and DiNA have the potential to empower various tas
 
 # Results and checkpoints
 
-Checkpoints will be available soon. Stay tuned!
-
 ## Image Classification
 ### DiNAT
 DiNAT is identical to NAT in architecture, with every other layer replaced with Dilated NA.
@@ -36,13 +34,13 @@ These variants provide similar or better classification accuracy (except for Tin
 
 | Model | Resolution | Kernel size | # of Params | FLOPs | Pre-training | Top-1 |
 |---|---|---|---|---|---|---|
-| DiNAT-Mini | 224x224 | 7x7 | 20M | 2.7G | - | [81.8%](#) |
-| DiNAT-Tiny | 224x224 | 7x7 | 28M | 4.3G | - | [82.7%](#) |
-| DiNAT-Small | 224x224 | 7x7 | 51M | 7.8G | - | [83.8%](#) |
-| DiNAT-Base | 224x224 | 7x7 | 90M | 13.7G | - | [84.4%](#) |
-| DiNAT-Large | 224x224 | 7x7 | 200M | 30.6G | [ImageNet-22K](#) | [86.5%](#) |
-| DiNAT-Large | 384x384 | 7x7 | 200M | 89.7G | [ImageNet-22K](#) | [87.2%](#) |
-| DiNAT-Large | 384x384 | 11x11 | 200M | 92.4G | [ImageNet-22K](#) | [87.3%](#) |
+| DiNAT-Mini | 224x224 | 7x7 | 20M | 2.7G | - | [81.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth) |
+| DiNAT-Tiny | 224x224 | 7x7 | 28M | 4.3G | - | [82.7%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth) |
+| DiNAT-Small | 224x224 | 7x7 | 51M | 7.8G | - | [83.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth) |
+| DiNAT-Base | 224x224 | 7x7 | 90M | 13.7G | - | [84.4%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth) |
+| DiNAT-Large | 224x224 | 7x7 | 200M | 30.6G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [86.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_224.pth) |
+| DiNAT-Large | 384x384 | 7x7 | 200M | 89.7G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [87.2%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384.pth) |
+| DiNAT-Large | 384x384 | 11x11 | 200M | 92.4G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224_11x11interp.pth) | [87.3%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384_11x11.pth) |
 
 ### DiNAT<sub>s</sub>
 DiNAT<sub>s</sub> variants are identical to Swin in terms of architecture, with WSA replaced with NA and SWSA replaced with DiNA.
@@ -50,37 +48,69 @@ These variants can provide better throughput on CUDA, at the expense of slightly
 
 | Model | Resolution | Kernel size | # of Params | FLOPs | Pre-training | Top-1 |
 |---|---|---|---|---|---|---|
-| DiNAT<sub>s</sub>-Tiny | 224x224 | 7x7 | 28M | 4.5G | - | [81.8%](#) |
-| DiNAT<sub>s</sub>-Small | 224x224 | 7x7 | 50M | 8.7G | - | [83.5%](#) |
-| DiNAT<sub>s</sub>-Base | 224x224 | 7x7 | 88M | 15.4G | - | [83.8%](#) |
-| DiNAT<sub>s</sub>-Large | 224x224 | 7x7 | 197M | 34.5G | [ImageNet-22K](#) | [86.5%](#) |
-| DiNAT<sub>s</sub>-Large | 384x384 | 7x7 | 197M | 101.5G | [ImageNet-22K](#) | [87.4%](#) |
+| DiNAT<sub>s</sub>-Tiny | 224x224 | 7x7 | 28M | 4.5G | - | [81.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Small | 224x224 | 7x7 | 50M | 8.7G | - | [83.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Base | 224x224 | 7x7 | 88M | 15.4G | - | [83.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Large | 224x224 | 7x7 | 197M | 34.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [86.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_224.pth) |
+| DiNAT<sub>s</sub>-Large | 384x384 | 7x7 | 197M | 101.5G | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [87.4%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_384.pth) |
 
+### Isotropic variants
+
+| Model | # of Params | FLOPs | Top-1 |
+|---|---|---|---|
+| NAT-iso-Small | 22M | 4.3G | [80.0%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/nat_isotropic_small_in1k_224.pth) |
+| DiNAT-iso-Small | 22M | 4.3G | [80.8%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/dinat_isotropic_small_in1k_224.pth) |
+| ViT-rpb-Small | 22M | 4.6G | [81.2%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/vitrpb_small_in1k_224.pth) |
+| NAT-iso-Base | 86M | 16.9G | [81.6%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/nat_isotropic_base_in1k_224.pth) |
+| DiNAT-iso-Base | 86M | 16.9G | [82.1%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/dinat_isotropic_base_in1k_224.pth) |
+| ViT-rpb-Base | 86M | 17.5G | [82.5%](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/vitrpb_base_in1k_224.pth) |
 
 Details on training and validation are provided in [classification](classification/DiNAT.md).
 
 ## Object Detection and Instance Segmentation
+### DiNAT
 | Backbone | Network | # of Params | FLOPs | mAP | Mask mAP | Pre-training | Checkpoint |
 |---|---|---|---|---|---|---|---|
-| DiNAT-Mini | Mask R-CNN | 40M | 225G | 47.2 | 42.5 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Tiny | Mask R-CNN | 48M | 258G | 48.6 | 43.5 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Small | Mask R-CNN | 70M | 330G | 49.3 | 44.0 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Mini | Cascade Mask R-CNN | 77M | 704G | 51.2 | 44.4 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Tiny | Cascade Mask R-CNN | 85M | 737G | 52.2 | 45.1 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Small | Cascade Mask R-CNN | 108M | 809G | 52.9 | 45.8 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Base | Cascade Mask R-CNN | 147M | 931G | 53.4 | 46.2 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Large | Cascade Mask R-CNN | 258M | 1276G | 55.2 | 47.7 | [ImageNet-22K](#) | [Download](#) |
+| DiNAT-Mini | Mask R-CNN | 40M | 225G | 47.2 | 42.5 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/maskrcnn_dinat_mini.pth) |
+| DiNAT-Tiny | Mask R-CNN | 48M | 258G | 48.6 | 43.5 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/maskrcnn_dinat_tiny.pth) |
+| DiNAT-Small | Mask R-CNN | 70M | 330G | 49.3 | 44.0 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/maskrcnn_dinat_small.pth) |
+| DiNAT-Mini | Cascade Mask R-CNN | 77M | 704G | 51.2 | 44.4 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_mini.pth) |
+| DiNAT-Tiny | Cascade Mask R-CNN | 85M | 737G | 52.2 | 45.1 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_tiny.pth) |
+| DiNAT-Small | Cascade Mask R-CNN | 108M | 809G | 52.9 | 45.8 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_small.pth) |
+| DiNAT-Base | Cascade Mask R-CNN | 147M | 931G | 53.4 | 46.2 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_base.pth) |
+| DiNAT-Large | Cascade Mask R-CNN | 258M | 1276G | 55.2 | 47.7 | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_large.pth) |
+
+### DiNAT<sub>s</sub>
+| Backbone | Network | # of Params | FLOPs | mAP | Mask mAP | Pre-training | Checkpoint |
+|---|---|---|---|---|---|---|---|
+| DiNAT<sub>s</sub>-Tiny | Mask R-CNN | 48M | 263G | 46.6 | 42.1 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/maskrcnn_dinat_s_tiny.pth) |
+| DiNAT<sub>s</sub>-Small | Mask R-CNN | 69M | 350G | 48.6 | 43.5 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/maskrcnn_dinat_s_small.pth) |
+| DiNAT<sub>s</sub>-Tiny | Cascade Mask R-CNN | 86M | 742G | 51.0 | 44.1 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_s_tiny.pth) |
+| DiNAT<sub>s</sub>-Small | Cascade Mask R-CNN | 107M | 829G | 52.3 | 45.2 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_s_small.pth) |
+| DiNAT<sub>s</sub>-Base | Cascade Mask R-CNN | 145M | 966G | 52.6 | 45.3 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_s_base.pth) |
+| DiNAT<sub>s</sub>-Large | Cascade Mask R-CNN | 253M | 1357G | 54.8 | 47.2 | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/coco/cascadedmaskrcnn_dinat_s_large.pth) |
+
 
 Details on training and validation are provided in [detection](detection/DiNAT.md).
 
 ## Semantic Segmentation
+### DiNAT
 | Backbone | Network | # of Params | FLOPs | mIoU | mIoU (multi-scale) | Pre-training | Checkpoint |
 |---|---|---|---|---|---|---|---|
-| DiNAT-Mini | UPerNet | 50M | 900G | 45.8 | 47.2 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Tiny | UPerNet| 58M | 934G | 47.8 | 48.8 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Small | UPerNet | 82M | 1010G | 48.9 | 49.9 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Base | UPerNet | 123M | 1137G | 49.6 | 50.4 | [ImageNet-1K](#) | [Download](#) |
-| DiNAT-Large | UPerNet | 238M | 2335G | 53.5 | 54.6 | [ImageNet-22K](#) | [Download](#) |
+| DiNAT-Mini | UPerNet | 50M | 900G | 45.8 | 47.2 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_mini.pth) |
+| DiNAT-Tiny | UPerNet| 58M | 934G | 47.8 | 48.8 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_tiny.pth) |
+| DiNAT-Small | UPerNet | 82M | 1010G | 48.9 | 49.9 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_small.pth) |
+| DiNAT-Base | UPerNet | 123M | 1137G | 49.6 | 50.4 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_base.pth) |
+| DiNAT-Large | UPerNet | 238M | 2335G | 53.5 | 54.6 | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_large.pth) |
+
+### DiNAT<sub>s</sub>
+| Backbone | Network | # of Params | FLOPs | mIoU | mIoU (multi-scale) | Pre-training | Checkpoint |
+|---|---|---|---|---|---|---|---|
+| DiNAT<sub>s</sub>-Tiny | UPerNet| 60M | 941G | 46.0 | 47.4 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_tiny.pth) |
+| DiNAT<sub>s</sub>-Small | UPerNet | 81M | 1030G | 48.6 | 49.9 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_small.pth) |
+| DiNAT<sub>s</sub>-Base | UPerNet | 121M | 1173G | 49.4 | 50.2 | [ImageNet-1K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_base.pth) |
+| DiNAT<sub>s</sub>-Large | UPerNet | 234M | 2466G | 53.4 | 54.6 | [ImageNet-22K](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth) | [Download](https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/ade20k/upernet_dinat_s_large.pth) |
+
 
 Details on training and validation are provided in [segmentation](segmentation/DiNAT.md).
 
