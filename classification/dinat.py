@@ -1,6 +1,6 @@
 """
 Dilated Neighborhood Attention Transformer.
-https://arxiv.org/abs/2204.07143
+https://arxiv.org/abs/2209.15001
 
 This source code is licensed under the license found in the
 LICENSE file in the root directory of this source tree.

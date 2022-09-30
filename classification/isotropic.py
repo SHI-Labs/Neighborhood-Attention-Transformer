@@ -1,6 +1,6 @@
 """
 Dilated Neighborhood Attention Transformer.
-https://arxiv.org/abs/2204.07143
+https://arxiv.org/abs/2209.15001
 
 Isotropic models.
 
