@@ -26,7 +26,7 @@ from timm.utils import accuracy, AverageMeter, natural_key, setup_default_loggin
 from nat import *
 from dinat import *
 from dinats import *
-from dinatiso import *
+from isotropic import *
 from natten.extras import get_imagenet_gflops as get_gflops
 from natten.extras import get_mparams
 

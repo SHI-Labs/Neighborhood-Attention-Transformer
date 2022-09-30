@@ -131,7 +131,7 @@ optimizer = dict(_delete_=True, type='AdamW', lr=0.000075, betas=(0.9, 0.999), w
 lr_config = dict(step=[27, 33])
 runner = dict(type='EpochBasedRunner', max_epochs=36)
 
-# Mixed precision
+# No mixed precision with float16 in DiNAT-L
 #fp16 = None
 #optimizer_config = dict(
 #   type="Fp16OptimizerHook",
