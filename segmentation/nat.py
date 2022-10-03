@@ -65,7 +65,7 @@ class Mlp(nn.Module):
 
 
 class NATLayer(nn.Module):
-    def __init__(self, dim, num_heads, kernel_size=7,
+    def __init__(self, dim, num_heads, kernel_size=7, dilation=None,
                  mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0., drop_path=0.,
                  act_layer=nn.GELU, norm_layer=nn.LayerNorm, layer_scale=None):
         super().__init__()
@@ -75,7 +75,7 @@ class NATLayer(nn.Module):
 
         self.norm1 = norm_layer(dim)
         self.attn = NeighborhoodAttention(
-            dim, kernel_size=kernel_size, num_heads=num_heads,
+            dim, kernel_size=kernel_size, dilation=dilation, num_heads=num_heads,
             qkv_bias=qkv_bias, qk_scale=qk_scale, attn_drop=attn_drop, proj_drop=drop)
 
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
@@ -104,7 +104,8 @@ class NATLayer(nn.Module):
 
 
 class NATBlock(nn.Module):
-    def __init__(self, dim, depth, num_heads, kernel_size, downsample=True,
+    def __init__(self, dim, depth, num_heads, kernel_size,  dilations=None,
+                 downsample=True,
                  mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0.,
                  drop_path=0., norm_layer=nn.LayerNorm, layer_scale=None):
         super().__init__()
@@ -113,7 +114,9 @@ class NATBlock(nn.Module):
 
         self.blocks = nn.ModuleList([
             NATLayer(dim=dim,
-                     num_heads=num_heads, kernel_size=kernel_size,
+                     num_heads=num_heads,
+                     kernel_size=kernel_size,
+                     dilation=None if dilations is None else dilations[i],
                      mlp_ratio=mlp_ratio,
                      qkv_bias=qkv_bias, qk_scale=qk_scale,
                      drop=drop, attn_drop=attn_drop,
@@ -142,6 +145,7 @@ class NAT(nn.Module):
                  drop_path_rate=0.2,
                  in_chans=3,
                  kernel_size=7,
+                 dilations=None,
                  out_indices=(0, 1, 2, 3),
                  qkv_bias=True,
                  qk_scale=None,
@@ -169,6 +173,7 @@ class NAT(nn.Module):
                              depth=depths[i],
                              num_heads=num_heads[i],
                              kernel_size=kernel_size,
+                             dilations=None if dilations is None else dilations[i],
                              mlp_ratio=self.mlp_ratio,
                              qkv_bias=qkv_bias, qk_scale=qk_scale,
                              drop=drop_rate, attn_drop=attn_drop_rate,
