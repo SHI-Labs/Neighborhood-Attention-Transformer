@@ -1,0 +1,3 @@
+[submodule "natten"]
+	path = natten
+	url = git@github.com:SHI-Labs/NATTEN
