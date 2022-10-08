@@ -27,8 +27,7 @@ from nat import *
 from dinat import *
 from dinats import *
 from isotropic import *
-from natten.extras import get_imagenet_gflops as get_gflops
-from natten.extras import get_mparams
+from extras import get_gflops, get_mparams
 
 has_apex = False
 try:

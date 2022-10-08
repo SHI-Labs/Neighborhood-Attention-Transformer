@@ -9,7 +9,7 @@ from mmdet.models import build_detector
 from nat import *
 from dinat import *
 from dinats import *
-from natten.extras import get_gflops, get_mparams
+from extras import get_gflops, get_mparams
 
 
 def parse_args():
