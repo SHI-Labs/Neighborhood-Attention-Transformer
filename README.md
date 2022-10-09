@@ -50,6 +50,7 @@ Note that the edges are special (edge) cases.
 ### October 8, 2022
 * [NATTEN](https://github.com/SHI-Labs/NATTEN) is now [available as a pip package](https://www.shi-labs.com/natten/)!
     * You can now install NATTEN with pre-compiled wheels, and start using it in seconds. 
+    * NATTEN will be maintained and developed as a [separate project](https://github.com/SHI-Labs/NATTEN) to support broader usage of sliding window attention, even beyond computer vision.
 
 ### September 29, 2022
 * New preprint: [Dilated Neighborhood Attention Transformer](DiNAT.md).
