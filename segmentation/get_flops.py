@@ -7,7 +7,7 @@ from mmcv import Config
 from nat import *
 from dinat import *
 from dinats import *
-from natten.extras import get_gflops, get_mparams
+from extras import get_gflops, get_mparams
 
 from mmseg.models import build_segmentor
 
