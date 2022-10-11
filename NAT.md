@@ -52,10 +52,10 @@ We've also released a [pure-torch version of Neighborhood Attention](NATTEN.md) 
 ## Classification
 | Model | # of Params | FLOPs | Top-1 |
 |---|---|---|---|
-| NAT-Mini | 20M | 2.7G | [81.8%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_mini.pth) |
-| NAT-Tiny | 28M | 4.3G | [83.2%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_tiny.pth) |
-| NAT-Small | 51M | 7.8G | [83.7%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_small.pth) |
-| NAT-Base | 90M | 13.7G | [84.3%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_base.pth) |
+| NAT-Mini | 20M | 2.7G | [81.8%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_mini.pth) |
+| NAT-Tiny | 28M | 4.3G | [83.2%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_tiny.pth) |
+| NAT-Small | 51M | 7.8G | [83.7%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_small.pth) |
+| NAT-Base | 90M | 13.7G | [84.3%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_base.pth) |
 
 
 Details on training and validation are provided in [classification](classification/NAT.md).
@@ -63,23 +63,23 @@ Details on training and validation are provided in [classification](classificati
 ## Object Detection
 | Backbone | Network | # of Params | FLOPs | mAP | Mask mAP | Checkpoint |
 |---|---|---|---|---|---|---|
-| NAT-Mini | Mask R-CNN | 40M | 225G | 46.5 | 41.7 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_mini_maskrcnn.pth) |
-| NAT-Tiny | Mask R-CNN | 48M | 258G | 47.7 | 42.6 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_tiny_maskrcnn.pth) |
-| NAT-Small | Mask R-CNN | 70M | 330G | 48.4 | 43.2 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_small_maskrcnn.pth) |
-| NAT-Mini | Cascade Mask R-CNN | 77M | 704G | 50.3 | 43.6 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_mini_cascademaskrcnn.pth) |
-| NAT-Tiny | Cascade Mask R-CNN | 85M | 737G | 51.4 | 44.5 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_tiny_cascademaskrcnn.pth) |
-| NAT-Small | Cascade Mask R-CNN | 108M | 809G | 52.0 | 44.9 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_small_cascademaskrcnn.pth) |
-| NAT-Base | Cascade Mask R-CNN | 147M | 931G | 52.3 | 45.1 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/DET/nat_base_cascademaskrcnn.pth) |
+| NAT-Mini | Mask R-CNN | 40M | 225G | 46.5 | 41.7 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_mini_maskrcnn.pth) |
+| NAT-Tiny | Mask R-CNN | 48M | 258G | 47.7 | 42.6 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_tiny_maskrcnn.pth) |
+| NAT-Small | Mask R-CNN | 70M | 330G | 48.4 | 43.2 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_small_maskrcnn.pth) |
+| NAT-Mini | Cascade Mask R-CNN | 77M | 704G | 50.3 | 43.6 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_mini_cascademaskrcnn.pth) |
+| NAT-Tiny | Cascade Mask R-CNN | 85M | 737G | 51.4 | 44.5 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_tiny_cascademaskrcnn.pth) |
+| NAT-Small | Cascade Mask R-CNN | 108M | 809G | 52.0 | 44.9 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_small_cascademaskrcnn.pth) |
+| NAT-Base | Cascade Mask R-CNN | 147M | 931G | 52.3 | 45.1 | [Download](https://shi-labs.com/projects/nat/checkpoints/DET/nat_base_cascademaskrcnn.pth) |
 
 Details on training and validation are provided in [detection](detection/NAT.md).
 
 ## Semantic Segmentation
 | Backbone | Network | # of Params | FLOPs | mIoU | mIoU (multi-scale) | Checkpoint |
 |---|---|---|---|---|---|---|
-| NAT-Mini | UPerNet | 50M | 900G | 45.1 | 46.4 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/SEG/nat_mini_upernet.pth) |
-| NAT-Tiny | UPerNet| 58M | 934G | 47.1 | 48.4 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/SEG/nat_tiny_upernet.pth) |
-| NAT-Small | UPerNet | 82M | 1010G | 48.0 | 49.5 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/SEG/nat_small_upernet.pth) |
-| NAT-Base | UPerNet | 123M | 1137G | 48.5 | 49.7 | [Download](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/SEG/nat_base_upernet.pth) |
+| NAT-Mini | UPerNet | 50M | 900G | 45.1 | 46.4 | [Download](https://shi-labs.com/projects/nat/checkpoints/SEG/nat_mini_upernet.pth) |
+| NAT-Tiny | UPerNet| 58M | 934G | 47.1 | 48.4 | [Download](https://shi-labs.com/projects/nat/checkpoints/SEG/nat_tiny_upernet.pth) |
+| NAT-Small | UPerNet | 82M | 1010G | 48.0 | 49.5 | [Download](https://shi-labs.com/projects/nat/checkpoints/SEG/nat_small_upernet.pth) |
+| NAT-Base | UPerNet | 123M | 1137G | 48.5 | 49.7 | [Download](https://shi-labs.com/projects/nat/checkpoints/SEG/nat_base_upernet.pth) |
 
 Details on training and validation are provided in [segmentation](segmentation/NAT.md).
 

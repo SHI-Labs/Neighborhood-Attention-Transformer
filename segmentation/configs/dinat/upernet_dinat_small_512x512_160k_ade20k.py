@@ -12,6 +12,7 @@ model = dict(
         drop_path_rate=0.5,
         kernel_size=7,
         dilations=[[1, 16, 1], [1, 4, 1, 8], [1, 2, 1, 3, 1, 4, 1, 2, 1, 3, 1, 4, 1, 2, 1, 3, 1, 4], [1, 2, 1, 2, 1]],
+        pretrained='https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth',
     ),
     decode_head=dict(
         in_channels=[96, 192, 384, 768],

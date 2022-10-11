@@ -81,8 +81,8 @@ python3 validate.py --model nat_base --pretrained /path/to/ImageNet1k
 ## Checkpoints
 | Model | # of Params | FLOPs | Top-1 | Config file |
 |---|---|---|---|---|
-| NAT-Mini | 20M | 2.7G | [81.8%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_mini.pth) | [nat_mini.yml](configs/nat_mini.yml) |
-| NAT-Tiny | 28M | 4.3G | [83.2%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_tiny.pth) | [nat_tiny.yml](configs/nat_tiny.yml) |
-| NAT-Small | 51M | 7.8G | [83.7%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_small.pth) | [nat_small.yml](configs/nat_small.yml) |
-| NAT-Base | 90M | 13.7G | [84.3%](http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_base.pth) | [nat_base.yml](configs/nat_base.yml) |
+| NAT-Mini | 20M | 2.7G | [81.8%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_mini.pth) | [nat_mini.yml](configs/nat_mini.yml) |
+| NAT-Tiny | 28M | 4.3G | [83.2%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_tiny.pth) | [nat_tiny.yml](configs/nat_tiny.yml) |
+| NAT-Small | 51M | 7.8G | [83.7%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_small.pth) | [nat_small.yml](configs/nat_small.yml) |
+| NAT-Base | 90M | 13.7G | [84.3%](https://shi-labs.com/projects/nat/checkpoints/CLS/nat_base.pth) | [nat_base.yml](configs/nat_base.yml) |
 

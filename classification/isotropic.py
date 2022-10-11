@@ -16,12 +16,12 @@ from dinats import NATransformerLayer, PatchEmbed, Mlp
 
 model_urls = {
     # ImageNet-1K
-    "vitrpb_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/vitrpb_small_in1k_224.pth",
-    "nat_isotropic_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/nat_isotropic_small_in1k_224.pth",
-    "dinat_isotropic_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/dinat_isotropic_small_in1k_224.pth",
-    "vitrpb_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/vitrpb_base_in1k_224.pth",
-    "nat_isotropic_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/nat_isotropic_base_in1k_224.pth",
-    "dinat_isotropic_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/isotropic/dinat_isotropic_base_in1k_224.pth",
+    "vitrpb_small_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/vitrpb_small_in1k_224.pth",
+    "nat_isotropic_small_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/nat_isotropic_small_in1k_224.pth",
+    "dinat_isotropic_small_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/dinat_isotropic_small_in1k_224.pth",
+    "vitrpb_base_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/vitrpb_base_in1k_224.pth",
+    "nat_isotropic_base_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/nat_isotropic_base_in1k_224.pth",
+    "dinat_isotropic_base_1k": "https://shi-labs.com/projects/dinat/checkpoints/isotropic/dinat_isotropic_base_in1k_224.pth",
 }
 
 

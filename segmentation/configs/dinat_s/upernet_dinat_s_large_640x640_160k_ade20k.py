@@ -11,6 +11,7 @@ model = dict(
         patch_norm=True,
         kernel_size=7,
         dilations=[[1, 20], [1, 10], [1, 2, 1, 3, 1, 4, 1, 5, 1, 2, 1, 3, 1, 4, 1, 5, 1, 5], [1, 2]],
+        pretrained='https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth',
     ),
     decode_head=dict(
         in_channels=[192, 384, 768, 1536],

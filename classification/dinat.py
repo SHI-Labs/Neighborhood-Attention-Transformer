@@ -11,17 +11,17 @@ from nat import NAT
 
 model_urls = {
     # ImageNet-1K
-    "dinat_mini_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth",
-    "dinat_tiny_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth",
-    "dinat_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth",
-    "dinat_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth",
-    "dinat_large_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_224.pth",
-    "dinat_large_1k_384": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384.pth",
-    "dinat_large_1k_384_11x11": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384_11x11.pth",
+    "dinat_mini_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_mini_in1k_224.pth",
+    "dinat_tiny_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth",
+    "dinat_small_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth",
+    "dinat_base_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth",
+    "dinat_large_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_224.pth",
+    "dinat_large_1k_384": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384.pth",
+    "dinat_large_1k_384_11x11": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384_11x11.pth",
 
     # ImageNet-22K
-    "dinat_large_21k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth",
-    "dinat_large_21k_11x11": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224_11x11interp.pth",
+    "dinat_large_21k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth",
+    "dinat_large_21k_11x11": "https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224_11x11interp.pth",
     # 11x11 contains the same weights as the original, except for RPB which is interpolated using a bicubic interpolation.
     # Swin uses the same interpolation when changing window sizes.
 }

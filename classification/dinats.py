@@ -17,14 +17,14 @@ from nat import Mlp
 
 model_urls = {
     # ImageNet-1K
-    "dinat_s_tiny_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth",
-    "dinat_s_small_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth",
-    "dinat_s_base_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth",
-    "dinat_s_large_1k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_224.pth",
-    "dinat_s_large_1k_384": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_384.pth",
+    "dinat_s_tiny_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_tiny_in1k_224.pth",
+    "dinat_s_small_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_small_in1k_224.pth",
+    "dinat_s_base_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth",
+    "dinat_s_large_1k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_224.pth",
+    "dinat_s_large_1k_384": "https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_large_in1k_384.pth",
 
     # ImageNet-22K
-    "dinat_s_large_21k": "https://shilab.cs.uoregon.edu/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth",
+    "dinat_s_large_21k": "https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_s_large_in22k_224.pth",
 }
 
 
