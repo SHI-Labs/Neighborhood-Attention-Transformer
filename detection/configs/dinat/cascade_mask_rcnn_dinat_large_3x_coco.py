@@ -14,6 +14,7 @@ model = dict(
         drop_path_rate=0.6,
         kernel_size=7,
         dilations=[[1, 28, 1], [1, 7, 1, 14], [1, 3, 1, 5, 1, 7, 1, 3, 1, 5, 1, 7, 1, 3, 1, 5, 1, 7], [1, 3, 1, 3, 1]],
+        pretrained='https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth',
     ),
     neck=dict(in_channels=[192, 384, 768, 1536]),
 

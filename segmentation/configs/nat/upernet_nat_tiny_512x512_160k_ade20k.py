@@ -11,7 +11,7 @@ model = dict(
         num_heads=[2, 4, 8, 16],
         drop_path_rate=0.3,
         kernel_size=7,
-        pretrained='http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_tiny.pth',
+        pretrained='https://shi-labs.com/projects/nat/checkpoints/CLS/nat_tiny.pth',
     ),
     decode_head=dict(
         in_channels=[64, 128, 256, 512],

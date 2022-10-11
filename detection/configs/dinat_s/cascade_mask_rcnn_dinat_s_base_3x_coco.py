@@ -13,6 +13,7 @@ model = dict(
         patch_norm=True,
         kernel_size=7,
         dilations=[[1, 28], [1, 14], [1, 3, 1, 5, 1, 7, 1, 3, 1, 5, 1, 7, 1, 3, 1, 5, 1, 7], [1, 3]],
+        pretrained='https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_s_base_in1k_224.pth',
     ),
     neck=dict(in_channels=[128, 256, 512, 1024]),
     roi_head=dict(

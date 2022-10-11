@@ -14,7 +14,7 @@ model = dict(
         drop_path_rate=0.3,
         kernel_size=7,
         layer_scale=1e-5,
-        pretrained='http://ix.cs.uoregon.edu/~alih/nat/checkpoints/CLS/nat_small.pth',
+        pretrained='https://shi-labs.com/projects/nat/checkpoints/CLS/nat_small.pth',
     ),
     neck=dict(in_channels=[96, 192, 384, 768]),
     roi_head=dict(
