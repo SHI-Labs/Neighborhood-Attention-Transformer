@@ -76,13 +76,14 @@ class PatchMerging(nn.Module):
         pad_input = (H % 2 == 1) or (W % 2 == 1)
         if pad_input:
             x = pad(x, (0, 0, 0, W % 2, 0, H % 2))
+            _, H, W, _ = x.shape
 
         x0 = x[:, 0::2, 0::2, :]  # B H/2 W/2 C
         x1 = x[:, 1::2, 0::2, :]  # B H/2 W/2 C
         x2 = x[:, 0::2, 1::2, :]  # B H/2 W/2 C
         x3 = x[:, 1::2, 1::2, :]  # B H/2 W/2 C
         x = torch.cat([x0, x1, x2, x3], -1)  # B H/2 W/2 4*C
-        x = x.view(B, -1, 4 * C)  # B H/2*W/2 4*C
+        x = x.view(B, H//2, W//2, 4 * C)  # B H/2 W/2 4*C
 
         x = self.norm(x)
         x = self.reduction(x)
