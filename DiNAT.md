@@ -5,11 +5,11 @@
 Preprint Link: [Dilated Neighborhood Attention Transformer
 ](https://arxiv.org/abs/2209.15001)
 
-By [Ali Hassani](https://alihassanijr.com/),
+By [Ali Hassani]<sup>[1]</sup>(https://alihassanijr.com/),
 and
-[Humphrey Shi](https://www.humphreyshi.com/)
+[Humphrey Shi<sup>[1,2]</sup>](https://www.humphreyshi.com/)
 
-In association with SHI Lab @ University of Oregon & UIUC and Picsart AI Research (PAIR).
+In association with SHI Lab @ University of Oregon & UIUC<sup>[1]</sup> and Picsart AI Research (PAIR)<sup>[2]</sup>.
 
 
 ![DiNAT-Intro](assets/dinat/radar_dark.png#gh-dark-mode-only)
@@ -17,15 +17,22 @@ In association with SHI Lab @ University of Oregon & UIUC and Picsart AI Researc
 
 
 # Abstract
-Transformers are quickly becoming one of the most heavily applied deep learning architectures across modalities, domains, and tasks.
-In vision, on top of ongoing efforts into plain transformers, hierarchical transformers have also gained significant attention, thanks to their performance and easy integration into existing frameworks.
-These models typically employ localized attention mechanisms, such as the sliding-window Neighborhood Attention (NA) or Swin Transformer's Shifted Window Self Attention.
-While effective at reducing self attention's quadratic complexity, local attention weakens two of the most desirable properties of self attention: long range inter-dependency modeling, and global receptive field.
-In this paper, we introduce Dilated Neighborhood Attention (DiNA), a natural, flexible and efficient extension to NA that can capture more global context and expand receptive fields exponentially at no additional cost. 
-NA's local attention and DiNA's sparse global attention complement each other, and therefore we introduce Dilated Neighborhood Attention Transformer (DiNAT), a new hierarchical vision transformer built upon both.
-DiNAT variants enjoy significant improvements over attention-based baselines such as NAT and Swin, as well as modern convolutional baseline ConvNeXt.
-Our Large model is ahead of its Swin counterpart by 1.5% box AP in COCO object detection, 1.3% mask AP in COCO instance segmentation, and 1.1% mIoU in ADE20K semantic segmentation, and faster in throughput. 
-We believe combinations of NA and DiNA have the potential to empower various tasks beyond those presented in this paper.
+Transformers are quickly becoming one of the most heavily applied deep learning architectures across modalities, 
+domains, and tasks. In vision, on top of ongoing efforts into plain transformers, hierarchical transformers have also 
+gained significant attention, thanks to their performance and easy integration into existing frameworks. These models 
+typically employ localized attention mechanisms, such as the sliding-window Neighborhood Attention (NA) or 
+Swin Transformer's Shifted Window Self Attention. While effective at reducing self attention's quadratic complexity, 
+local attention weakens two of the most desirable properties of self attention: long range inter-dependency modeling, 
+and global receptive field. In this paper, we introduce Dilated Neighborhood Attention (DiNA), a natural, flexible and 
+efficient extension to NA that can capture more global context and expand receptive fields exponentially at no 
+additional cost. NA's local attention and DiNA's sparse global attention complement each other, and therefore we 
+introduce Dilated Neighborhood Attention Transformer (DiNAT), a new hierarchical vision transformer built upon both. 
+DiNAT variants enjoy significant improvements over strong baselines such as NAT, Swin, and ConvNeXt. Our large model is 
+faster and ahead of its Swin counterpart by 1.5% box AP in COCO object detection, 1.3% mask AP in COCO instance 
+segmentation, and 1.1% mIoU in ADE20K semantic segmentation. Paired with new frameworks, our large variant is the new 
+state of the art panoptic segmentation model on COCO (58.2 PQ) and ADE20K (48.5 PQ), and instance segmentation model on 
+Cityscapes (44.5 AP) and ADE20K (35.4 AP) (no extra data). It also matches the state of the art specialized semantic 
+segmentation models on ADE20K (58.2 mIoU), and ranks second on Cityscapes (84.5 mIoU) (no extra data). 
 
 
 # Results and checkpoints

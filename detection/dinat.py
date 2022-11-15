@@ -18,4 +18,5 @@ class DiNAT(NAT):
     DiNAT is NAT with dilations.
     It's that simple!
     """
+
     pass
