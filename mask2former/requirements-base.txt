@@ -1,0 +1,4 @@
+-f https://download.pytorch.org/whl/cu111/torch_stable.html
+torch==1.9.0+cu111
+-f https://download.pytorch.org/whl/cu111/torch_stable.html
+torchvision==0.10.0+cu111
