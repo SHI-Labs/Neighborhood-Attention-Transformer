@@ -13,6 +13,10 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/panoptic-segmentation-on-cityscapes-val)](https://paperswithcode.com/sota/panoptic-segmentation-on-cityscapes-val?p=dilated-neighborhood-attention-transformer)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=dilated-neighborhood-attention-transformer)
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-ffhq-256-x-256)](https://paperswithcode.com/sota/image-generation-on-ffhq-256-x-256?p=stylenat-giving-each-head-a-new-perspective)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-ffhq-1024-x-1024)](https://paperswithcode.com/sota/image-generation-on-ffhq-1024-x-1024?p=stylenat-giving-each-head-a-new-perspective)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-lsun-churches-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-churches-256-x-256?p=stylenat-giving-each-head-a-new-perspective)
+
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
@@ -34,7 +38,7 @@ leading to significant performance boosts in downstream vision tasks.
 
 ### November 11, 2022
 * New preprint: [StyleNAT: Giving Each Head a New Perspective](https://github.com/SHI-Labs/StyleNAT).
-  * Style-based GAN powered with Neighborhood Attention!
+  * Style-based GAN powered with Neighborhood Attention sets new SOTA on FFHQ-256 with a 2.05 FID.
 
 ### October 8, 2022
 * [NATTEN](https://github.com/SHI-Labs/NATTEN) is now [available as a pip package](https://www.shi-labs.com/natten/)!

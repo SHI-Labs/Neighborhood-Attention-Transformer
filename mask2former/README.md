@@ -70,3 +70,7 @@ python train_m2f.py --config-file $CONFIG \
 | DiNAT-Large | MS-COCO | 220M | 522G | 58.2 | 49.2 | 68.1 | [YAML file](configs/coco/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_100ep.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_coco_panoptic.pth) |
 | DiNAT-Large | ADE20K | 220M | 535G | 48.5 | 34.4 | 56.2 | [YAML file](configs/ade20k/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_160k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_ade20k_panoptic.pth) |
 | DiNAT-Large | Cityscapes | 220M | 522G | 66.9 | 43.8 | 83.2 | [YAML file](configs/cityscapes/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_90k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_cityscapes_panoptic.pth) |
+
+# Acknowledgements
+This section completely relies on [Mask2Former](https://github.com/facebookresearch/Mask2Former); 
+We thank them for a really straightforward repository.
