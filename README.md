@@ -28,10 +28,12 @@ Neighborhood Attention (NA, local attention) was introduced in our original pape
 We recently introduced a new model, [DiNAT](DiNAT.md), 
 which extends NA by dilating neighborhoods (DiNA, sparse global attention, a.k.a. dilated local attention).
 
-Combinations of NA/DiNA are capable of preserving locality, 
+Combinations of NA/DiNA are capable of preserving locality, maintaining
+translational equivariance,
 expanding the receptive field exponentially, 
 and capturing longer-range inter-dependencies, 
-leading to significant performance boosts in downstream vision tasks.
+leading to significant performance boosts in downstream vision tasks, such as
+[StyleNAT](https://github.com/SHI-Labs/StyleNAT) for image generation.
 
 
 # News
@@ -39,6 +41,7 @@ leading to significant performance boosts in downstream vision tasks.
 ### November 11, 2022
 * New preprint: [StyleNAT: Giving Each Head a New Perspective](https://github.com/SHI-Labs/StyleNAT).
   * Style-based GAN powered with Neighborhood Attention sets new SOTA on FFHQ-256 with a 2.05 FID.
+  ![stylenat](assets/stylenat/stylenat.png)
 
 ### October 8, 2022
 * [NATTEN](https://github.com/SHI-Labs/NATTEN) is now [available as a pip package](https://www.shi-labs.com/natten/)!
