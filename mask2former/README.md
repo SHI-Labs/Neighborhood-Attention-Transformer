@@ -4,16 +4,28 @@ Our Mask2Former experiments in [DiNAT](https://arxiv.org/abs/2209.15001) were co
 We simply added DiNAT as a backbone, and trained it with the same settings as the original Swin-L experiments.
 Refer to [Mask2Former's README](M2F/README.md) for more information.
 
-Please make sure you clone this repository with the `--recursive` flag to include [Mask2Former's source](https://github.com/facebookresearch/Mask2Former).
+Please make sure you clone this repository with the `--recursive` flag to include [Mask2Former's source](https://github.com/facebookresearch/Mask2Former):
+```shell
+git clone --recursive https://github.com/SHI-Labs/Neighborhood-Attention-Transformer
+```
+If you haven't already done that, you can simply run this in the root directory to pull Mask2Former's dependencies:
+```shell
+git submodule update --init --recursive
+```
 
 ## Setup
-You can simply set up the environment by running:
+Recommended Python version is 3.8.
+You can simply set up the requirements by running:
 ```shell
 pip install -r requirements-base.txt
 pip install -r requirements.txt
 ```
 The first command installs torch and torchvision, and the second installs the rest of the dependencies for those specific torch builds.
-Recommended Python version is 3.8.
+
+Per Mask2Former's instructions, you also need to compile MSDeformableAttn before you run for the first time:
+```shell
+(cd M2F/mask2former/modeling/pixel_decoder/ops && sh make.sh)
+```
 
 Make sure to refer to [Mask2Former's dataset instructions](M2F/datasets/README.md) to set up dataset paths before training/evaluation.
 
@@ -28,6 +40,12 @@ Running evaluation is also through the same script, but with additional flags:
 ```
 python train_m2f.py --config-file $CONFIG \
   --eval-only MODEL.WEIGHTS $PATH_TO_CHECKPOINT
+```
+
+To activate multi-scale testing (semantic segmentation ONLY):
+```
+python train_m2f.py --config-file $CONFIG \
+  --eval-only TEST.AUG.ENABLED True MODEL.WEIGHTS $PATH_TO_CHECKPOINT
 ```
 
 ## Model Zoo

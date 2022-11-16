@@ -5,7 +5,7 @@
 Preprint Link: [Dilated Neighborhood Attention Transformer
 ](https://arxiv.org/abs/2209.15001)
 
-By [Ali Hassani]<sup>[1]</sup>(https://alihassanijr.com/),
+By [Ali Hassani<sup>[1]</sup>](https://alihassanijr.com/),
 and
 [Humphrey Shi<sup>[1,2]</sup>](https://www.humphreyshi.com/)
 
@@ -123,6 +123,31 @@ Details on training and validation are provided in [detection](detection/DiNAT.m
 
 
 Details on training and validation are provided in [segmentation](segmentation/DiNAT.md).
+
+## Image Segmentation with Mask2Former
+
+### Instance Segmentation
+| Backbone | Dataset | # of Params | FLOPs | AP | Config | Checkpoint |
+|---|---|---|---|---|---|---|
+| DiNAT-Large | MS-COCO | 220M | 522G | 50.7 | [YAML file](configs/coco/instance-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_100ep.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_coco_instance.pth) |
+| DiNAT-Large | ADE20K | 220M | 535G | 35.2 | [YAML file](configs/ade20k/instance-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_160k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_ade20k_instance.pth) |
+| DiNAT-Large | Cityscapes | 220M | 522G | 44.5 | [YAML file](configs/cityscapes/instance-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_90k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_cityscapes_instance.pth) |
+
+### Semantic Segmentation
+| Backbone | Dataset | # of Params | FLOPs | mIoU (multiscale) | Config | Checkpoint |
+|---|---|---|---|---|---|---|
+| DiNAT-Large | ADE20K | 220M | 518G | 58.2 | [YAML file](configs/ade20k/semantic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_160k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_ade20k_semantic.pth) |
+| DiNAT-Large | Cityscapes | 220M | 509G | 84.5 | [YAML file](configs/cityscapes/semantic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_90k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_cityscapes_semantic.pth) |
+
+
+### Instance Segmentation
+| Backbone | Dataset | # of Params | FLOPs | PQ | AP | mIoU | Config | Checkpoint |
+|---|---|---|---|---|---|---|---|---|
+| DiNAT-Large | MS-COCO | 220M | 522G | 58.2 | 49.2 | 68.1 | [YAML file](configs/coco/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_100ep.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_coco_panoptic.pth) |
+| DiNAT-Large | ADE20K | 220M | 535G | 48.5 | 34.4 | 56.2 | [YAML file](configs/ade20k/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_160k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_ade20k_panoptic.pth) |
+| DiNAT-Large | Cityscapes | 220M | 522G | 66.9 | 43.8 | 83.2 | [YAML file](configs/cityscapes/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_90k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_cityscapes_panoptic.pth) |
+
+Details on training and validation are provided in [mask2former](mask2former/README.md).
 
 
 # Citation

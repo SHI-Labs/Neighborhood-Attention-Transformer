@@ -10,7 +10,8 @@ LICENSE file in the root directory of this source tree.
 
 import os
 import sys
-sys.path.insert(0, './M2F')
+
+sys.path.insert(0, "./M2F")
 _ds = os.getenv("DETECTRON2_DATASETS", "M2F/datasets")
 os.environ["DETECTRON2_DATASETS"] = _ds
 
@@ -58,7 +59,9 @@ def m2f_dinat_setup(args):
     cfg.freeze()
     default_setup(cfg, args)
     # Setup logger for "mask_former" module
-    setup_logger(output=cfg.OUTPUT_DIR, distributed_rank=comm.get_rank(), name="mask2former")
+    setup_logger(
+        output=cfg.OUTPUT_DIR, distributed_rank=comm.get_rank(), name="mask2former"
+    )
     return cfg
 
 
@@ -76,4 +79,3 @@ if __name__ == "__main__":
         dist_url=args.dist_url,
         args=(args,),
     )
-
