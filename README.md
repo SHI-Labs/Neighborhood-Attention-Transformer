@@ -13,13 +13,17 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/panoptic-segmentation-on-cityscapes-val)](https://paperswithcode.com/sota/panoptic-segmentation-on-cityscapes-val?p=dilated-neighborhood-attention-transformer)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/instance-segmentation-on-coco-minival)](https://paperswithcode.com/sota/instance-segmentation-on-coco-minival?p=dilated-neighborhood-attention-transformer)
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-ffhq-256-x-256)](https://paperswithcode.com/sota/image-generation-on-ffhq-256-x-256?p=stylenat-giving-each-head-a-new-perspective)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-ffhq-1024-x-1024)](https://paperswithcode.com/sota/image-generation-on-ffhq-1024-x-1024?p=stylenat-giving-each-head-a-new-perspective)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/stylenat-giving-each-head-a-new-perspective/image-generation-on-lsun-churches-256-x-256)](https://paperswithcode.com/sota/image-generation-on-lsun-churches-256-x-256?p=stylenat-giving-each-head-a-new-perspective)
+
 ![NAT-Intro](assets/dinat/intro_dark.png#gh-dark-mode-only)
 ![NAT-Intro](assets/dinat/intro_light.png#gh-light-mode-only)
 
 **Powerful hierarchical vision transformers based on sliding window attention.**
 
 Neighborhood Attention (NA, local attention) was introduced in our original paper, 
-[NAT](NAT.md), and runs efficiently with our CUDA extension to PyTorch, [NATTEN](https://github.com/SHI-Labs/NATTEN).
+[NAT](NAT.md), and runs efficiently with our extension to PyTorch, [NATTEN](https://github.com/SHI-Labs/NATTEN).
 
 We recently introduced a new model, [DiNAT](DiNAT.md), 
 which extends NA by dilating neighborhoods (DiNA, sparse global attention, a.k.a. dilated local attention).
@@ -28,6 +32,21 @@ Combinations of NA/DiNA are capable of preserving locality,
 expanding the receptive field exponentially, 
 and capturing longer-range inter-dependencies, 
 leading to significant performance boosts in downstream vision tasks.
+
+
+# News
+
+### November 11, 2022
+* New preprint: [StyleNAT: Giving Each Head a New Perspective](https://github.com/SHI-Labs/StyleNAT).
+  * Style-based GAN powered with Neighborhood Attention sets new SOTA on FFHQ-256 with a 2.05 FID.
+
+### October 8, 2022
+* [NATTEN](https://github.com/SHI-Labs/NATTEN) is now [available as a pip package](https://www.shi-labs.com/natten/)!
+    * You can now install NATTEN with pre-compiled wheels, and start using it in seconds. 
+    * NATTEN will be maintained and developed as a [separate project](https://github.com/SHI-Labs/NATTEN) to support broader usage of sliding window attention, even beyond computer vision.
+
+### September 29, 2022
+* New preprint: [Dilated Neighborhood Attention Transformer](DiNAT.md).
 
 
 # Dilated Neighborhood Attention :fire:
@@ -54,35 +73,6 @@ Note that the edges are special (edge) cases.
 ![720p_fast_lm](assets/nat/720p_fast_lm.gif#gh-light-mode-only)
 
 
-# News
-
-### October 8, 2022
-* [NATTEN](https://github.com/SHI-Labs/NATTEN) is now [available as a pip package](https://www.shi-labs.com/natten/)!
-    * You can now install NATTEN with pre-compiled wheels, and start using it in seconds. 
-    * NATTEN will be maintained and developed as a [separate project](https://github.com/SHI-Labs/NATTEN) to support broader usage of sliding window attention, even beyond computer vision.
-
-### September 29, 2022
-* New preprint: [Dilated Neighborhood Attention Transformer](DiNAT.md).
-* [NA CUDA extension v0.13](https://github.com/SHI-Labs/NATTEN) released with dilation support!
-
-### July 9, 2022
-* [NA CUDA extension v0.12](https://github.com/SHI-Labs/NATTEN) released.
-  * NA runs much more efficiently now, up to 40% faster and uses up to 25% less memory compared to Swin Transformer’s Shifted Window Self Attention.
-  * Improved FP16 throughput.
-  * Improved training speed and stability.
-  
-### May 12, 2022
-* [1-D Neighborhood Attention](https://github.com/SHI-Labs/NATTEN) support added!
-* Moved the kernel to `natten/` now, since there's a single version for all three tasks, and we're adding more features to the extension.
-
-### April 30, 2022
-* [NA CUDA extension v0.11](https://github.com/SHI-Labs/NATTEN) released.
-  * It's faster in both training and inference, 
-  * with a single version for all three tasks (no downstream-specific version)
-* [PyTorch implementation](https://github.com/SHI-Labs/NATTEN) released
-  * Works both with and without CUDA, but not very efficient. Try to use the CUDA extension when possible.
-
-
 
 # Citation
 ```bibtex
@@ -101,6 +91,15 @@ Note that the edges are special (edge) cases.
 	year         = 2022,
 	url          = {https://arxiv.org/abs/2209.15001},
 	eprint       = {2209.15001},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CV}
+}
+@article{walton2022stylenat,
+	title        = {StyleNAT: Giving Each Head a New Perspective},
+	author       = {Steven Walton and Ali Hassani and Xingqian Xu and Zhangyang Wang and Humphrey Shi},
+	year         = 2022,
+	url          = {https://arxiv.org/abs/2211.05770},
+	eprint       = {2211.05770},
 	archiveprefix = {arXiv},
 	primaryclass = {cs.CV}
 }

@@ -19,9 +19,22 @@ from nat import Mlp
 
 
 class NATransformerLayer(nn.Module):
-    def __init__(self, dim, num_heads, kernel_size=7, dilation=1,
-                 mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0., drop_path=0.,
-                 act_layer=nn.GELU, norm_layer=nn.LayerNorm, **kwargs):
+    def __init__(
+        self,
+        dim,
+        num_heads,
+        kernel_size=7,
+        dilation=1,
+        mlp_ratio=4.0,
+        qkv_bias=True,
+        qk_scale=None,
+        drop=0.0,
+        attn_drop=0.0,
+        drop_path=0.0,
+        act_layer=nn.GELU,
+        norm_layer=nn.LayerNorm,
+        **kwargs,
+    ):
         super().__init__()
         self.dim = dim
         self.num_heads = num_heads
@@ -29,13 +42,25 @@ class NATransformerLayer(nn.Module):
 
         self.norm1 = norm_layer(dim)
         self.attn = NeighborhoodAttention(
-            dim, kernel_size=kernel_size, dilation=dilation, num_heads=num_heads,
-            qkv_bias=qkv_bias, qk_scale=qk_scale, attn_drop=attn_drop, proj_drop=drop)
+            dim,
+            kernel_size=kernel_size,
+            dilation=dilation,
+            num_heads=num_heads,
+            qkv_bias=qkv_bias,
+            qk_scale=qk_scale,
+            attn_drop=attn_drop,
+            proj_drop=drop,
+        )
 
-        self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
+        self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
         self.norm2 = norm_layer(dim)
         mlp_hidden_dim = int(dim * mlp_ratio)
-        self.mlp = Mlp(in_features=dim, hidden_features=mlp_hidden_dim, act_layer=act_layer, drop=drop)
+        self.mlp = Mlp(
+            in_features=dim,
+            hidden_features=mlp_hidden_dim,
+            act_layer=act_layer,
+            drop=drop,
+        )
 
     def forward(self, x):
         shortcut = x
@@ -86,28 +111,48 @@ class BasicLayer(nn.Module):
     https://github.com/microsoft/Swin-Transformer
     """
 
-    def __init__(self, dim, depth, num_heads, kernel_size, dilations=None,
-                 mlp_ratio=4., qkv_bias=True, qk_scale=None, drop=0., attn_drop=0.,
-                 drop_path=0., norm_layer=nn.LayerNorm, downsample=None):
+    def __init__(
+        self,
+        dim,
+        depth,
+        num_heads,
+        kernel_size,
+        dilations=None,
+        mlp_ratio=4.0,
+        qkv_bias=True,
+        qk_scale=None,
+        drop=0.0,
+        attn_drop=0.0,
+        drop_path=0.0,
+        norm_layer=nn.LayerNorm,
+        downsample=None,
+    ):
 
         super().__init__()
         self.dim = dim
         self.depth = depth
 
         # build blocks
-        self.blocks = nn.ModuleList([
-            NATransformerLayer(dim=dim,
-                               num_heads=num_heads,
-                               kernel_size=kernel_size,
-                               dilation=1 if dilations is None else dilations[i],
-                               mlp_ratio=mlp_ratio,
-                               qkv_bias=qkv_bias,
-                               qk_scale=qk_scale,
-                               drop=drop,
-                               attn_drop=attn_drop,
-                               drop_path=drop_path[i] if isinstance(drop_path, list) else drop_path,
-                               norm_layer=norm_layer)
-            for i in range(depth)])
+        self.blocks = nn.ModuleList(
+            [
+                NATransformerLayer(
+                    dim=dim,
+                    num_heads=num_heads,
+                    kernel_size=kernel_size,
+                    dilation=1 if dilations is None else dilations[i],
+                    mlp_ratio=mlp_ratio,
+                    qkv_bias=qkv_bias,
+                    qk_scale=qk_scale,
+                    drop=drop,
+                    attn_drop=attn_drop,
+                    drop_path=drop_path[i]
+                    if isinstance(drop_path, list)
+                    else drop_path,
+                    norm_layer=norm_layer,
+                )
+                for i in range(depth)
+            ]
+        )
 
         # patch merging layer
         if downsample is not None:
@@ -138,7 +183,9 @@ class PatchEmbed(nn.Module):
         self.in_chans = in_chans
         self.embed_dim = embed_dim
 
-        self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=self.patch_size, stride=self.patch_size)
+        self.proj = nn.Conv2d(
+            in_chans, embed_dim, kernel_size=self.patch_size, stride=self.patch_size
+        )
         self.norm = None if norm_layer is None else norm_layer(embed_dim)
 
     def forward(self, x):
@@ -157,26 +204,28 @@ class PatchEmbed(nn.Module):
 
 @BACKBONES.register_module()
 class DiNAT_s(nn.Module):
-    def __init__(self,
-                 pretrain_img_size=224,
-                 patch_size=4,
-                 in_chans=3,
-                 embed_dim=96,
-                 depths=[2, 2, 6, 2],
-                 num_heads=[3, 6, 12, 24],
-                 kernel_size=7,
-                 dilations=None,
-                 mlp_ratio=4.,
-                 qkv_bias=True,
-                 qk_scale=None,
-                 drop_rate=0.,
-                 attn_drop_rate=0.,
-                 drop_path_rate=0.2,
-                 norm_layer=nn.LayerNorm,
-                 patch_norm=True,
-                 out_indices=(0, 1, 2, 3),
-                 pretrained=None,
-                 frozen_stages=-1):
+    def __init__(
+        self,
+        pretrain_img_size=224,
+        patch_size=4,
+        in_chans=3,
+        embed_dim=96,
+        depths=[2, 2, 6, 2],
+        num_heads=[3, 6, 12, 24],
+        kernel_size=7,
+        dilations=None,
+        mlp_ratio=4.0,
+        qkv_bias=True,
+        qk_scale=None,
+        drop_rate=0.0,
+        attn_drop_rate=0.0,
+        drop_path_rate=0.2,
+        norm_layer=nn.LayerNorm,
+        patch_norm=True,
+        out_indices=(0, 1, 2, 3),
+        pretrained=None,
+        frozen_stages=-1,
+    ):
         super().__init__()
 
         self.pretrain_img_size = pretrain_img_size
@@ -188,19 +237,24 @@ class DiNAT_s(nn.Module):
 
         # split image into non-overlapping patches
         self.patch_embed = PatchEmbed(
-            patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim,
-            norm_layer=norm_layer if self.patch_norm else None)
+            patch_size=patch_size,
+            in_chans=in_chans,
+            embed_dim=embed_dim,
+            norm_layer=norm_layer if self.patch_norm else None,
+        )
 
         self.pos_drop = nn.Dropout(p=drop_rate)
 
         # stochastic depth
-        dpr = [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]  # stochastic depth decay rule
+        dpr = [
+            x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))
+        ]  # stochastic depth decay rule
 
         # build layers
         self.layers = nn.ModuleList()
         for i_layer in range(self.num_layers):
             layer = BasicLayer(
-                dim=int(embed_dim * 2 ** i_layer),
+                dim=int(embed_dim * 2**i_layer),
                 depth=depths[i_layer],
                 num_heads=num_heads[i_layer],
                 kernel_size=kernel_size,
@@ -210,19 +264,19 @@ class DiNAT_s(nn.Module):
                 qk_scale=qk_scale,
                 drop=drop_rate,
                 attn_drop=attn_drop_rate,
-                drop_path=dpr[sum(depths[:i_layer]):sum(depths[:i_layer + 1])],
+                drop_path=dpr[sum(depths[:i_layer]) : sum(depths[: i_layer + 1])],
                 norm_layer=norm_layer,
-                downsample=PatchMerging if (i_layer < self.num_layers - 1) else None
+                downsample=PatchMerging if (i_layer < self.num_layers - 1) else None,
             )
             self.layers.append(layer)
 
-        num_features = [int(embed_dim * 2 ** i) for i in range(self.num_layers)]
+        num_features = [int(embed_dim * 2**i) for i in range(self.num_layers)]
         self.num_features = num_features
 
         # add a norm layer for each output
         for i_layer in out_indices:
             layer = norm_layer(num_features[i_layer])
-            layer_name = f'norm{i_layer}'
+            layer_name = f"norm{i_layer}"
             self.add_module(layer_name, layer)
 
         self._freeze_stages()
@@ -260,7 +314,7 @@ class DiNAT_s(nn.Module):
         elif pretrained is None:
             pass
         else:
-            raise TypeError('pretrained must be a str or None')
+            raise TypeError("pretrained must be a str or None")
 
     def forward(self, x):
         """Forward function."""
@@ -273,7 +327,7 @@ class DiNAT_s(nn.Module):
             x_out, x = layer(x)
 
             if i in self.out_indices:
-                norm_layer = getattr(self, f'norm{i}')
+                norm_layer = getattr(self, f"norm{i}")
                 x_out = norm_layer(x_out)
 
                 out = x_out.permute(0, 3, 1, 2).contiguous()
@@ -285,4 +339,3 @@ class DiNAT_s(nn.Module):
         """Convert the model into training mode while keep layers freezed."""
         super().train(mode)
         self._freeze_stages()
-

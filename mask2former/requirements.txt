@@ -1,0 +1,17 @@
+cython==0.29.32
+scipy==1.9.1
+shapely==1.8.4
+h5py==3.7.0
+scikit-image==0.19.3
+timm==0.6.11
+opencv-python==4.6.0.66
+git+https://github.com/cocodataset/panopticapi.git@7bb4655548f98f3fedc07bf37e9040a992b054b0
+git+https://github.com/mcordts/cityscapesScripts.git@8da5dd00c9069058ccc134654116aac52d4f6fa2
+-f https://dl.fbaipublicfiles.com/detectron2/wheels/cu111/torch1.9/index.html
+detectron2==0.6
+-f https://shi-labs.com/natten/wheels/cu111/torch1.9/index.html
+natten==0.14.2
+submitit==1.4.5
+python-dotenv==0.21.0
+ninja==1.11.1
+setuptools==59.5.0
