@@ -38,6 +38,10 @@ leading to significant performance boosts in downstream vision tasks, such as
 
 # News
 
+### November 18, 2022
+* NAT and DiNAT are now available through HuggingFace's [transformers](https://github.com/huggingface/transformers).
+  * NAT and DiNAT classification models are also available on the HuggingFace's [Model Hub](https://huggingface.co/models?search=shi-labs+in1k).
+
 ### November 11, 2022
 * New preprint: [StyleNAT: Giving Each Head a New Perspective](https://github.com/SHI-Labs/StyleNAT).
   * Style-based GAN powered with Neighborhood Attention sets new SOTA on FFHQ-256 with a 2.05 FID.
