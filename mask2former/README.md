@@ -64,7 +64,7 @@ python train_m2f.py --config-file $CONFIG \
 | DiNAT-Large | Cityscapes | 220M | 509G | 84.5 | [YAML file](configs/cityscapes/semantic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_90k.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_cityscapes_semantic.pth) |
 
 
-### Instance Segmentation
+### Panoptic Segmentation
 | Backbone | Dataset | # of Params | FLOPs | PQ | AP | mIoU | Config | Checkpoint |
 |---|---|---|---|---|---|---|---|---|
 | DiNAT-Large | MS-COCO | 220M | 522G | 58.2 | 49.2 | 68.1 | [YAML file](configs/coco/panoptic-segmentation/dinat/maskformer2_dinat_large_IN21k_384_bs16_100ep.yaml) | [Download](https://shi-labs.com/projects/dinat/checkpoints/m2f/mask2former_dinat_large_coco_panoptic.pth) |
