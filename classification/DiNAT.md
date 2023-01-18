@@ -20,9 +20,9 @@ These variants provide similar or better classification accuracy (except for Tin
 | DiNAT-Tiny | 224x224 | 7x7 | 28M | 4.3G | - | [82.7%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_tiny_in1k_224.pth) | [dinat_tiny.yml](configs/dinat_tiny.yml) |
 | DiNAT-Small | 224x224 | 7x7 | 51M | 7.8G | - | [83.8%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_small_in1k_224.pth) | [dinat_small.yml](configs/dinat_small.yml) |
 | DiNAT-Base | 224x224 | 7x7 | 90M | 13.7G | - | [84.4%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_base_in1k_224.pth) | [dinat_base.yml](configs/dinat_base.yml) |
-| DiNAT-Large | 224x224 | 7x7 | 200M | 30.6G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [86.5%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_224.pth) | [dinat_large.yml](configs/dinat_large.yml) |
-| DiNAT-Large | 384x384 | 7x7 | 200M | 89.7G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [87.2%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384.pth) | [dinat_large_384.yml](configs/dinat_large_384.yml) |
-| DiNAT-Large | 384x384 | 11x11 | 200M | 92.4G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224_11x11interp.pth) | [87.3%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384_11x11.pth) | [dinat_large_384.yml](configs/dinat_large_384.yml) |
+| DiNAT-Large | 224x224 | 7x7 | 200M | 30.6G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [86.6%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_224.pth) |
+| DiNAT-Large | 384x384 | 7x7 | 200M | 89.7G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224.pth) | [87.4%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384.pth) |
+| DiNAT-Large | 384x384 | 11x11 | 200M | 92.4G | [ImageNet-22K](https://shi-labs.com/projects/dinat/checkpoints/imagenet22k/dinat_large_in22k_224_11x11interp.pth) | [87.5%](https://shi-labs.com/projects/dinat/checkpoints/imagenet1k/dinat_large_in22k_in1k_384_11x11.pth) |
 
 ### DiNAT<sub>s</sub>
 DiNAT<sub>s</sub> variants are identical to Swin in terms of architecture, with WSA replaced with NA and SWSA replaced with DiNA.
