@@ -1,7 +1,7 @@
 # Neighborhood Attention Transformers
 
 <a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
-<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Trasnformer-%2300B0F0" /></a>
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Transformer-%2300B0F0" /></a>
 [<img src="https://img.shields.io/badge/CUDA%20Extension-NATTEN-%23fc6562" />](https://github.com/SHI-Labs/NATTEN)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/instance-segmentation-on-ade20k-val)](https://paperswithcode.com/sota/instance-segmentation-on-ade20k-val?p=dilated-neighborhood-attention-transformer)
