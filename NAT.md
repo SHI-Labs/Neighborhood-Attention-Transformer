@@ -2,8 +2,8 @@
 
 <a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-2204.07143-orange" /></a>
 
-Preprint Link: [Neighborhood Attention Transformer
-](https://arxiv.org/abs/2204.07143)
+[Neighborhood Attention Transformer](https://arxiv.org/abs/2204.07143)
+(To appear in CVPR 2023.)
 
 By [Ali Hassani<sup>[1]</sup>](https://alihassanijr.com/),
 [Steven Walton<sup>[1]</sup>](https://stevenwalton.github.io/),
@@ -23,16 +23,17 @@ Picsart AI Research (PAIR)<sup>[2]</sup>, and Meta/Facebook AI<sup>[3]</sup>
 # Abstract
 ![NAT-Arch](assets/nat/model_dark.png#gh-dark-mode-only)
 ![NAT-Arch](assets/nat/model_light.png#gh-light-mode-only)
-We present Neighborhood Attention (NA), the first efficient and scalable sliding-window attention mechanism for vision. 
-NA is a pixel-wise operation, localizing self attention (SA) to the nearest neighboring pixels, and therefore enjoys a 
-linear time and space complexity compared to the quadratic complexity of SA. The sliding-window pattern allows NA's 
-receptive field to grow without needing extra pixel shifts, and preserves translational equivariance, unlike 
-Swin Transformer's Window Self Attention (WSA). We develop NATTEN (Neighborhood Attention Extension), a Python package 
-with efficient C++ and CUDA kernels, which allows NA to run up to 40% faster than Swin's WSA while using up to 25% less 
-memory. We further present Neighborhood Attention Transformer (NAT), a new hierarchical transformer design based on NA 
-that boosts image classification and downstream vision performance. Experimental results on NAT are competitive; 
-NAT-Tiny reaches 83.2% top-1 accuracy on ImageNet, 51.4% mAP on MS-COCO and 48.4% mIoU on ADE20K, which is 1.9% 
-ImageNet accuracy, 1.0% COCO mAP, and 2.6% ADE20K mIoU improvement over a Swin model with similar size.
+We present Neighborhood Attention (NA), the first efficient and scalable sliding window attention mechanism for vision. 
+NA is a pixel-wise operation, localizing self attention (SA) to the nearest neighboring pixels, and therefore enjoys a linear 
+time and space complexity compared to the quadratic complexity of SA. The sliding window pattern allows NA's receptive field to 
+grow without needing extra pixel shifts, and preserves translational equivariance, unlike Swin Transformer's Window Self 
+Attention (WSA). We develop [NATTEN (Neighborhood Attention Extension)](https://github.com/SHI-Labs/NATTEN/), a Python package 
+with efficient C++ and CUDA kernels, which allows NA to run up to 40% faster than Swin's WSA while using up to 25% less memory. 
+We further present Neighborhood Attention Transformer (NAT), a new hierarchical transformer design based on NA that boosts 
+image classification and downstream vision performance. Experimental results on NAT are competitive; NAT-Tiny reaches 83.2% 
+top-1 accuracy on ImageNet, 51.4% mAP on MS-COCO and 48.4% mIoU on ADE20K, which is 1.9% ImageNet accuracy, 1.0% COCO mAP, 
+and 2.6% ADE20K mIoU improvement over a Swin model with similar size. 
+To support more research based on sliding window attention, we open source our project and release our checkpoints.
 
 ## Implementation
 Neighborhood Attention is implemented within our [Neighborhood Attention Extension (NATTEN)](https://github.com/SHI-Labs/NATTEN/). 
@@ -78,13 +79,10 @@ Details on training and validation are provided in [segmentation](segmentation/N
 
 # Citation
 ```bibtex
-@article{hassani2022neighborhood,
+@inproceedings{hassani2023neighborhood,
 	title        = {Neighborhood Attention Transformer},
 	author       = {Ali Hassani and Steven Walton and Jiachen Li and Shen Li and Humphrey Shi},
-	year         = 2022,
-	url          = {https://arxiv.org/abs/2204.07143},
-	eprint       = {2204.07143},
-	archiveprefix = {arXiv},
-	primaryclass = {cs.CV}
+	year         = 2023,
+        booktitle    = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
 }
 ```

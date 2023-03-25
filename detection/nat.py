@@ -1,5 +1,6 @@
 """
 Neighborhood Attention Transformer.
+To appear in CVPR 2023.
 https://arxiv.org/abs/2204.07143
 
 This source code is licensed under the license found in the
