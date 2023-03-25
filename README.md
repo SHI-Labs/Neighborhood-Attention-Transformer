@@ -1,7 +1,9 @@
 # Neighborhood Attention Transformers
 
+<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/CVPR2023-Neighborhood%20Attention%20Transformer-%2300B0F0" /></a>
+
 <a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
-<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-Neighborhood%20Attention%20Transformer-%2300B0F0" /></a>
+
 [<img src="https://img.shields.io/badge/CUDA%20Extension-NATTEN-%23fc6562" />](https://github.com/SHI-Labs/NATTEN)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dilated-neighborhood-attention-transformer/instance-segmentation-on-ade20k-val)](https://paperswithcode.com/sota/instance-segmentation-on-ade20k-val?p=dilated-neighborhood-attention-transformer)
@@ -37,6 +39,9 @@ leading to significant performance boosts in downstream vision tasks, such as
 
 
 # News
+
+### March 25, 2023
+* Neighborhood Attention Transformer was accepted to CVPR 2023!
 
 ### November 18, 2022
 * NAT and DiNAT are now available through HuggingFace's [transformers](https://github.com/huggingface/transformers).
@@ -83,14 +88,11 @@ Note that the edges are special (edge) cases.
 
 # Citation
 ```bibtex
-@article{hassani2022neighborhood,
+@inproceedings{hassani2023neighborhood,
 	title        = {Neighborhood Attention Transformer},
 	author       = {Ali Hassani and Steven Walton and Jiachen Li and Shen Li and Humphrey Shi},
-	year         = 2022,
-	url          = {https://arxiv.org/abs/2204.07143},
-	eprint       = {2204.07143},
-	archiveprefix = {arXiv},
-	primaryclass = {cs.CV}
+	year         = 2023,
+        booktitle    = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
 }
 @article{hassani2022dilated,
 	title        = {Dilated Neighborhood Attention Transformer},
