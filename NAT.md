@@ -1,9 +1,10 @@
 # Neighborhood Attention Transformer
 
 <a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/arXiv-2204.07143-orange" /></a>
+<a href="https://www.youtube.com/watch?v=Ya4BfioxIHA"><img src="https://img.shields.io/badge/YouTube-Presentation-red" /></a>
 
-[Neighborhood Attention Transformer](https://arxiv.org/abs/2204.07143)
-(To appear in CVPR 2023.)
+[Neighborhood Attention Transformer](https://openaccess.thecvf.com/content/CVPR2023/html/Hassani_Neighborhood_Attention_Transformer_CVPR_2023_paper.html)
+(CVPR 2023.)
 
 By [Ali Hassani<sup>[1]</sup>](https://alihassanijr.com/),
 [Steven Walton<sup>[1]</sup>](https://stevenwalton.github.io/),
@@ -82,7 +83,9 @@ Details on training and validation are provided in [segmentation](segmentation/N
 @inproceedings{hassani2023neighborhood,
 	title        = {Neighborhood Attention Transformer},
 	author       = {Ali Hassani and Steven Walton and Jiachen Li and Shen Li and Humphrey Shi},
-	year         = 2023,
-        booktitle    = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
+	booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+	month        = {June},
+	year         = {2023},
+	pages        = {6185-6194}
 }
 ```

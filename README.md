@@ -1,6 +1,6 @@
 # Neighborhood Attention Transformers
 
-<a href="https://arxiv.org/abs/2204.07143"><img src="https://img.shields.io/badge/CVPR2023-Neighborhood%20Attention%20Transformer-%2300B0F0" /></a>
+<a href="https://openaccess.thecvf.com/content/CVPR2023/html/Hassani_Neighborhood_Attention_Transformer_CVPR_2023_paper.html"><img src="https://img.shields.io/badge/CVPR2023-Neighborhood%20Attention%20Transformer-%2300B0F0" /></a>
 
 <a href="https://arxiv.org/abs/2209.15001"><img src="https://img.shields.io/badge/arXiv-Dilated%20Neighborhood%20Attention%20Trasnformer-%23C209C1" /></a>
 
@@ -91,8 +91,10 @@ Note that the edges are special (edge) cases.
 @inproceedings{hassani2023neighborhood,
 	title        = {Neighborhood Attention Transformer},
 	author       = {Ali Hassani and Steven Walton and Jiachen Li and Shen Li and Humphrey Shi},
-	year         = 2023,
-        booktitle    = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
+	booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+	month        = {June},
+	year         = {2023},
+	pages        = {6185-6194}
 }
 @article{hassani2022dilated,
 	title        = {Dilated Neighborhood Attention Transformer},
