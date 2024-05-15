@@ -14,7 +14,10 @@ from timm.models.layers import trunc_normal_, DropPath, to_2tuple
 from mmcv.runner import load_checkpoint
 from mmdet.utils import get_root_logger
 from mmdet.models.builder import BACKBONES
+import natten
 from natten import NeighborhoodAttention2D as NeighborhoodAttention
+is_natten_post_017 = hasattr(natten, "context")
+
 from nat import Mlp
 
 
@@ -41,6 +44,7 @@ class NATransformerLayer(nn.Module):
         self.mlp_ratio = mlp_ratio
 
         self.norm1 = norm_layer(dim)
+        extra_args = {"rel_pos_bias": True} if is_natten_post_017 else {"bias": True}
         self.attn = NeighborhoodAttention(
             dim,
             kernel_size=kernel_size,
@@ -50,6 +54,7 @@ class NATransformerLayer(nn.Module):
             qk_scale=qk_scale,
             attn_drop=attn_drop,
             proj_drop=drop,
+            **extra_args,
         )
 
         self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
