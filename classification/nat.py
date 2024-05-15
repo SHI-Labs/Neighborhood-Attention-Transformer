@@ -10,7 +10,9 @@ import torch
 import torch.nn as nn
 from timm.models.layers import trunc_normal_, DropPath
 from timm.models.registry import register_model
+import natten
 from natten import NeighborhoodAttention2D as NeighborhoodAttention
+is_natten_post_017 = hasattr(natten, "context")
 
 
 model_urls = {
@@ -115,6 +117,7 @@ class NATLayer(nn.Module):
         self.mlp_ratio = mlp_ratio
 
         self.norm1 = norm_layer(dim)
+        extra_args = {"rel_pos_bias": True} if is_natten_post_017 else {"bias": True}
         self.attn = NeighborhoodAttention(
             dim,
             kernel_size=kernel_size,
@@ -124,6 +127,7 @@ class NATLayer(nn.Module):
             qk_scale=qk_scale,
             attn_drop=attn_drop,
             proj_drop=drop,
+            **extra_args,
         )
 
         self.drop_path = DropPath(drop_path) if drop_path > 0.0 else nn.Identity()
